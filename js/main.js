@@ -32,11 +32,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- Hero Video - play once on page load ---
-    const heroVideo = document.querySelector('.hero-cover video');
-    if (heroVideo) {
+    // --- Hero Videos - play in sequence ---
+    const heroVideos = Array.from(document.querySelectorAll('.hero-book video'));
+    if (heroVideos.length) {
+        heroVideos.forEach((video, i) => {
+            // Seek to first frame so the video displays its own content instead of a poster
+            video.addEventListener('loadeddata', () => {
+                video.currentTime = 0.001;
+                if (video.querySelector('source[src*="friends"]')) {
+                    video.defaultPlaybackRate = 0.8;
+                    video.playbackRate = 0.8;
+                }
+            });
+
+            video.addEventListener('ended', () => {
+                const next = heroVideos[i + 1];
+                if (next) next.play();
+            });
+        });
+
         window.addEventListener('load', () => {
-            heroVideo.play();
+            setTimeout(() => heroVideos[0].play(), 2000);
         });
     }
 

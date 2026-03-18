@@ -211,24 +211,55 @@ img {
     overflow: hidden;
 }
 
-.hero-cover {
+.hero-books {
     position: absolute;
-    left: 20%;
+    left: 2%;
     top: 50%;
     transform: translateY(-50%);
     z-index: 2;
-    animation: float 4s ease-in-out infinite;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.hero-book {
+    flex-shrink: 0;
+}
+
+.hero-book--1 { transform: rotate(-5deg); }
+.hero-book--2 { transform: rotate(4deg); }
+.hero-book--3 { transform: rotate(3deg); }
+.hero-book--4 { transform: rotate(-6deg); }
+
+.hero-book--1 .hero-cover-img {
+    animation: float1 4s ease-in-out infinite;
+}
+
+.hero-book--2 .hero-cover-img {
+    animation: float1 4s ease-in-out infinite;
+    animation-delay: 2.5s;
+}
+
+.hero-book--3 .hero-cover-img {
+    animation: float1 4s ease-in-out infinite;
+    animation-delay: 5s;
+}
+
+.hero-book--4 .hero-cover-img {
+    animation: float1 4s ease-in-out infinite;
+    animation-delay: 7.5s;
 }
 
 .hero-cover-img {
-    width: 320px;
+    width: 185px;
     border-radius: 12px;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+    display: block;
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(-50%); }
-    50% { transform: translateY(calc(-50% - 10px)); }
+@keyframes float1 {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
 }
 
 .hero-content {
@@ -433,8 +464,8 @@ img {
     width: 35%;
     height: auto;
     position: absolute;
-    top: 2%;
-    left: -5%;
+    top: -16%;
+    left: 15%;
     z-index: 2;
 }
 
@@ -1104,21 +1135,19 @@ img {
         padding: 100px 20px 80px;
     }
 
-    .hero-cover {
+    .hero-books {
         position: relative;
         left: auto;
         top: auto;
         transform: none;
-        animation: float 4s ease-in-out infinite;
-    }
-
-    @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 340px;
+        margin: 0 auto;
     }
 
     .hero-cover-img {
-        width: 240px;
+        width: 130px;
     }
 
     .hero-content {
@@ -1207,7 +1236,7 @@ img {
     }
 
     .hero-cover-img {
-        width: 200px;
+        width: 115px;
     }
 
     .contact-form {
@@ -1244,7 +1273,7 @@ img {
     }
 
     .hero-cover-img {
-        width: 180px;
+        width: 100px;
     }
 
     .section-title {
