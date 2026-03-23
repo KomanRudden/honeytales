@@ -4,6 +4,109 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- Live exchange rates (ZAR) ---
+    let fxRates = null;
+    const contactFxConvert = document.getElementById('contactFxConvert');
+    const FX_CACHE_KEY = 'ht_fx_rates';
+    const FX_CACHE_TTL = 6 * 60 * 60 * 1000; // 6 hours
+
+    // Load from cache immediately so rates are available without waiting for the API
+    try {
+        const cached = JSON.parse(localStorage.getItem(FX_CACHE_KEY));
+        if (cached && Date.now() - cached.ts < FX_CACHE_TTL) {
+            fxRates = cached.rates;
+        }
+    } catch (e) {}
+
+    // Always fetch fresh rates and update cache in background
+    fetch('https://api.frankfurter.app/latest?from=ZAR&to=USD,GBP,EUR')
+        .then(r => r.json())
+        .then(data => {
+            fxRates = data.rates;
+            try {
+                localStorage.setItem(FX_CACHE_KEY, JSON.stringify({ rates: fxRates, ts: Date.now() }));
+            } catch (e) {}
+        })
+        .catch(() => {});
+
+    function startPriceCycle() {
+        function run() {
+            if (!fxRates) { setTimeout(run, 500); return; }
+            const values = [
+                `$${(180 * fxRates.USD).toFixed(0)}`,
+                `£${(180 * fxRates.GBP).toFixed(0)}`,
+                `€${(180 * fxRates.EUR).toFixed(0)}`,
+                'R180'
+            ];
+            let idx = 0;
+            function cycle() {
+                scrollUp(statPrice, values[idx], () => {
+                    idx = (idx + 1) % values.length;
+                    setTimeout(cycle, 3000);
+                });
+            }
+            cycle();
+        }
+        setTimeout(run, 30000);
+    }
+
+    function updateContactFx(zarAmount) {
+        if (!contactFxConvert) return;
+        if (!fxRates || zarAmount === 0) { contactFxConvert.textContent = ''; return; }
+        const usd = (zarAmount * fxRates.USD).toFixed(0);
+        const gbp = (zarAmount * fxRates.GBP).toFixed(0);
+        const eur = (zarAmount * fxRates.EUR).toFixed(0);
+        contactFxConvert.textContent = `≈ $${usd} · £${gbp} · €${eur}`;
+    }
+
+    // --- Hero Stats Scroll-Up Animations ---
+    function scrollUp(el, value, onDone) {
+        el.innerHTML = `<span class="stat-scroll">${value}</span>`;
+        const inner = el.querySelector('.stat-scroll');
+        inner.addEventListener('animationend', () => {
+            // flatten — replace span with text so pop works on el directly
+            el.textContent = value;
+            pop(el, onDone);
+        }, { once: true });
+    }
+
+    function pop(el, onDone) {
+        el.classList.remove('stat-pop');
+        void el.offsetWidth;
+        el.classList.add('stat-pop');
+        if (onDone) setTimeout(onDone, 600);
+    }
+
+    const statBooks = document.getElementById('statBooks');
+    const statPoems = document.getElementById('statPoems');
+    const statAge   = document.getElementById('statAge');
+    const statPrice = document.getElementById('statPrice');
+
+    if (statBooks) {
+        // Chain: Books → Poems → Price → Age → Videos
+        scrollUp(statBooks, '4', () => {
+            scrollUp(statPoems, '44', () => {
+                scrollUp(statPrice, 'R180', () => {
+                    startPriceCycle(); // begin cycling currencies after 10s
+                    // Lock width to final "Ages 0-100" size so the ? doesn't cause reflow
+                    statAge.textContent = 'Ages 0\u2013100';
+                    statAge.style.minWidth = statAge.offsetWidth + 'px';
+                    statAge.style.textAlign = 'center';
+                    statAge.textContent = '\u2013';
+
+                    // Age: first scroll up "Ages 0–?", then 1s later scroll up "Ages 0–100"
+                    scrollUp(statAge, 'Ages 0\u2013?', () => {
+                        setTimeout(() => {
+                            scrollUp(statAge, 'Ages 0\u2013100', () => {
+                                startHeroVideos();
+                            });
+                        }, 1000);
+                    });
+                });
+            });
+        });
+    }
+
     // --- Mobile Navigation Toggle ---
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
@@ -32,8 +135,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- Hero Videos - play in sequence ---
+    // --- Hero Videos - play in sequence after counters finish ---
     const heroVideos = Array.from(document.querySelectorAll('.hero-book video'));
+
+    function setPlayingBook(index) {
+        heroVideos.forEach((v, i) => {
+            v.closest('.hero-book').classList.toggle('is-playing', i === index);
+        });
+    }
+
     if (heroVideos.length) {
         heroVideos.forEach((video, i) => {
             // Seek to first frame so the video displays its own content instead of a poster
@@ -47,13 +157,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
             video.addEventListener('ended', () => {
                 const next = heroVideos[i + 1];
-                if (next) next.play();
+                if (next) {
+                    setPlayingBook(i + 1);
+                    next.play();
+                } else {
+                    video.closest('.hero-book').classList.remove('is-playing');
+                }
             });
         });
+    }
 
-        window.addEventListener('load', () => {
-            setTimeout(() => heroVideos[0].play(), 2000);
-        });
+    function startHeroVideos() {
+        if (heroVideos.length) {
+            setPlayingBook(0);
+            heroVideos[0].play();
+        }
     }
 
     // --- Scroll fade-in animations ---
@@ -102,7 +220,71 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- Contact Form Validation ---
+    // --- Order Books Toggle ---
+    const orderToggle = document.getElementById('orderBooksToggle');
+    const bookOrderSelector = document.getElementById('bookOrderSelector');
+
+    if (orderToggle) {
+        orderToggle.addEventListener('change', () => {
+            bookOrderSelector.classList.toggle('show', orderToggle.checked);
+        });
+    }
+
+    // --- Contact section book qty counters ---
+    let contactGetSummary = null;
+    if (bookOrderSelector) {
+        const contactTotalEl = document.getElementById('contactTotalAmount');
+        const tiles = bookOrderSelector.querySelectorAll('.book-order-tile');
+
+        function recalcContactTotal() {
+            let total = 0;
+            tiles.forEach(tile => {
+                const qty = parseInt(tile.dataset.qty || 0);
+                total += qty * parseInt(tile.dataset.price || 180);
+            });
+            if (contactTotalEl) contactTotalEl.textContent = `R${total}`;
+            updateContactFx(total);
+        }
+
+        tiles.forEach(tile => {
+            tile.dataset.qty = '0';
+            const display = tile.querySelector('.qty-display');
+            const minusBtn = tile.querySelector('.qty-minus');
+            const plusBtn = tile.querySelector('.qty-plus');
+            minusBtn.disabled = true;
+
+            plusBtn.addEventListener('click', () => {
+                const qty = parseInt(tile.dataset.qty) + 1;
+                tile.dataset.qty = qty;
+                display.textContent = qty;
+                tile.classList.add('has-qty');
+                minusBtn.disabled = false;
+                recalcContactTotal();
+            });
+
+            minusBtn.addEventListener('click', () => {
+                const qty = Math.max(0, parseInt(tile.dataset.qty) - 1);
+                tile.dataset.qty = qty;
+                display.textContent = qty;
+                if (qty === 0) {
+                    tile.classList.remove('has-qty');
+                    minusBtn.disabled = true;
+                }
+                recalcContactTotal();
+            });
+        });
+
+        contactGetSummary = function() {
+            const lines = [];
+            tiles.forEach(tile => {
+                const qty = parseInt(tile.dataset.qty || 0);
+                if (qty > 0) lines.push(`${qty}× ${tile.dataset.title}`);
+            });
+            return lines;
+        };
+    }
+
+    // --- Contact Form Validation & Submission ---
     const contactForm = document.getElementById('contactForm');
     const formSuccess = document.getElementById('formSuccess');
 
@@ -135,27 +317,74 @@ document.addEventListener('DOMContentLoaded', () => {
             email.classList.remove('error');
         }
 
-        // Message validation
-        const message = document.getElementById('message');
-        const messageError = document.getElementById('messageError');
-        if (message.value.trim().length < 10) {
-            messageError.textContent = 'Please enter a message (at least 10 characters)';
-            message.classList.add('error');
-            isValid = false;
+        // Books & address validation (if ordering)
+        const booksError = document.getElementById('booksError');
+        const booksOrdered = document.getElementById('booksOrdered');
+        const addressError = document.getElementById('addressError');
+        const deliveryAddress = document.getElementById('deliveryAddress');
+
+        if (orderToggle && orderToggle.checked) {
+            const summary = contactGetSummary ? contactGetSummary() : [];
+            const totalEl = document.getElementById('contactTotalAmount');
+
+            if (summary.length === 0) {
+                booksError.textContent = 'Please add at least one book';
+                isValid = false;
+            } else {
+                booksError.textContent = '';
+                booksOrdered.value = summary.join(', ') + (totalEl ? ' — Total: ' + totalEl.textContent : '');
+            }
+
+            if (deliveryAddress.value.trim().length < 5) {
+                addressError.textContent = 'Please enter your delivery address';
+                deliveryAddress.classList.add('error');
+                isValid = false;
+            } else {
+                addressError.textContent = '';
+                deliveryAddress.classList.remove('error');
+            }
+
+            const deliveryCountry = document.getElementById('deliveryCountry');
+            const countryError = document.getElementById('countryError');
+            if (deliveryCountry.value.trim().length < 2) {
+                countryError.textContent = 'Please enter your country';
+                deliveryCountry.classList.add('error');
+                isValid = false;
+            } else {
+                countryError.textContent = '';
+                deliveryCountry.classList.remove('error');
+            }
         } else {
-            messageError.textContent = '';
-            message.classList.remove('error');
+            booksOrdered.value = '';
         }
 
         if (isValid) {
-            // Show success message
-            formSuccess.classList.add('show');
-            contactForm.reset();
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending…';
 
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                formSuccess.classList.remove('show');
-            }, 5000);
+            fetch('https://formspree.io/f/xqeyoekr', {
+                method: 'POST',
+                headers: { 'Accept': 'application/json' },
+                body: new FormData(contactForm)
+            })
+            .then(response => {
+                if (response.ok) {
+                    formSuccess.classList.add('show');
+                    contactForm.reset();
+                    bookOrderSelector.classList.remove('show');
+                    setTimeout(() => formSuccess.classList.remove('show'), 5000);
+                } else {
+                    alert('Something went wrong. Please email us directly at admin@honeytales.co.za');
+                }
+            })
+            .catch(() => {
+                alert('Something went wrong. Please email us directly at admin@honeytales.co.za');
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+            });
         }
     });
 

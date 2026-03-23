@@ -2,6 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DBXV2L0RBS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DBXV2L0RBS');
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Honey Tales Africa - Poems for Young and Old by Carol Honey</title>
     <meta name="description" content="Honey Tales Africa - delightful children's poems about African wildlife by Carol Honey. Lions, Elephants, Giraffes and more!">
@@ -16,7 +24,7 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#home" class="nav-logo">
-                <img src="assets/bee.png" alt="Honey Tales Africa" class="nav-logo-img">
+                <img src="assets/ht_honeytales_text.png" alt="Honey Tales Africa" class="nav-logo-img">
             </a>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                 <span></span>
@@ -24,11 +32,11 @@
                 <span></span>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#books">Books</a></li>
+                <li class="nav-hidden"><a href="#home">Home</a></li>
                 <li><a href="#animals">Animals</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="about.html">Author</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="order.html">Order</a></li>
             </ul>
         </div>
     </nav>
@@ -36,33 +44,47 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-books">
-            <div class="hero-book hero-book--1">
-                <video class="hero-cover-img" muted playsinline preload="auto">
+            <a href="books/africa.html" class="hero-book hero-book--1" aria-label="Honey Tales Africa Book 1">
+                <video class="hero-cover-img" muted playsinline preload="auto" poster="assets/africa-cover.png">
                     <source src="assets/africa-cover.mp4" type="video/mp4">
                 </video>
-            </div>
-            <div class="hero-book hero-book--2">
-                <video class="hero-cover-img" muted playsinline preload="auto">
+            </a>
+            <a href="books/goggas.html" class="hero-book hero-book--2" aria-label="Honey Tales Africa Book 2 – Goggas">
+                <video class="hero-cover-img" muted playsinline preload="auto" poster="assets/goggas-cover.png">
                     <source src="assets/gogga-cover.mp4" type="video/mp4">
                 </video>
-            </div>
-            <div class="hero-book hero-book--3">
-                <video class="hero-cover-img" muted playsinline preload="auto">
+            </a>
+            <a href="books/friends.html" class="hero-book hero-book--3" aria-label="Honey Tales Africa Book 3 – Furry and Feathered Friends">
+                <video class="hero-cover-img" muted playsinline preload="auto" poster="assets/friends-cover.png">
                     <source src="assets/friends-cover.mp4" type="video/mp4">
                 </video>
-            </div>
-            <div class="hero-book hero-book--4">
-                <video class="hero-cover-img" muted playsinline preload="auto">
+            </a>
+            <a href="books/wild.html" class="hero-book hero-book--4" aria-label="Honey Tales Africa Book 4 – Wild and Wonderful">
+                <video class="hero-cover-img" muted playsinline preload="auto" poster="assets/wild-cover.png">
                     <source src="assets/wild-cover.mp4" type="video/mp4">
                 </video>
-            </div>
+            </a>
         </div>
-        <div class="hero-content fade-in">
-            <img src="assets/ht_logo_large.png" alt="Honey Tales Africa" class="hero-logo">
-            <p class="hero-subtitle">Children's Books</p>
-            <p class="hero-author">by Carol Honey</p>
-            <p class="hero-tagline">Discover the wonderful world of African wildlife through delightful poems that enchant children and adults alike!</p>
-            <a href="#animals" class="btn btn-primary">Meet the Animals</a>
+        <div class="hero-series-pills" id="books">
+            <div class="hero-series-pill">
+                <span class="hero-series-number" id="statBooks">–</span>
+                <span class="hero-series-label">Books</span>
+            </div>
+            <div class="hero-series-divider"></div>
+            <div class="hero-series-pill">
+                <span class="hero-series-number" id="statPoems">–</span>
+                <span class="hero-series-label">Poems</span>
+            </div>
+            <div class="hero-series-divider"></div>
+            <div class="hero-series-pill">
+                <span class="hero-series-number" id="statAge">–</span>
+                <span class="hero-series-label">For everyone</span>
+            </div>
+            <div class="hero-series-divider"></div>
+            <div class="hero-series-pill">
+                <span class="hero-series-number" id="statPrice">–</span>
+                <span class="hero-series-label">Per book</span>
+            </div>
         </div>
         <div class="hero-wave">
             <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
@@ -71,36 +93,16 @@
         </div>
     </section>
 
-    <!-- Books Section -->
-    <section class="books-section" id="books">
-        <div class="container">
-            <h2 class="section-title fade-in">Our Books</h2>
-            <p class="section-subtitle fade-in">The Honey Tales Africa series</p>
-
-            <div class="book-item fade-in">
-                <div class="book-item-cover">
-                    <img src="assets/africa-cover.png" alt="Honey Tales Africa Book 1 Cover" loading="lazy">
-                </div>
-                <div class="book-item-info">
-                    <h3>Honey Tales Africa</h3>
-                    <p>Embark on an enchanting journey into the heart of African wildlife with Honey Tales Book 1. Through lively rhymes and captivating illustrations, this book introduces children to the fascinating animals and insects that inhabit the African landscape. It's an educational and fun adventure that will not only entertain but also teach your young readers about the marvellous world of nature.</p>
-                    <a href="#contact" class="btn btn-primary">Get Your Copy</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Poems Section -->
     <section class="animals-section" id="animals">
         <div class="container">
-            <h2 class="section-title fade-in">Discover Fun Animal Facts</h2>
-            <p class="section-subtitle fade-in">Learn amazing things about the animals of Africa</p>
+            <h2 class="section-title fade-in">Click the Animals</h2>
+            <p class="section-subtitle fade-in">Click on an animal to discover fun facts about them</p>
 
             <div class="animal-gallery">
                 <div class="animal-item fade-in" data-animal="giraffe">
                     <img src="assets/images/web/giraffe.png" alt="Giraffe - cartoon giraffe wearing a red scarf" loading="lazy">
                     <h3 class="animal-name">Giraffe</h3>
-                    <img src="assets/click-me.png" alt="Click me" class="click-me-hint">
                 </div>
 
                 <div class="animal-item fade-in" data-animal="zebras">
@@ -108,100 +110,6 @@
                     <h3 class="animal-name">Zebra</h3>
                 </div>
             </div>
-
-            <div class="animals-cta fade-in">
-                <p>Want to read all 11 poems with their beautiful illustrations? Get your copy of <strong>Honey Tales Africa &ndash; Book 1</strong>!</p>
-                <a href="#contact" class="btn btn-secondary">Get Your Copy</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about-section" id="about">
-        <div class="about-wave-top">
-            <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-                <path d="M0,40 C480,80 960,0 1440,40 L1440,0 L0,0 Z" fill="#FFF8E7"/>
-            </svg>
-        </div>
-        <div class="container">
-            <h2 class="section-title fade-in">About Honey Tales Africa</h2>
-
-            <div class="about-grid">
-                <div class="about-author fade-in">
-                    <div class="author-avatar">
-                        <img src="assets/images/web/author.png" alt="Carol Honey - Author of Honey Tales Africa" class="author-book-cover">
-                    </div>
-                    <h3>Carol Honey</h3>
-                    <p class="author-role">Author &amp; Poet</p>
-                    <p>Carol Honey is the independent self-published author of the Honey Tales Africa series of children's books. She has been writing humorous poems for her family and friends her whole life, but it was when she started writing for her Grand-Children that her friends and family persuaded her to publish.</p>
-                    <p>Carol has always had a keen interest in the wildlife of South Africa and wanted to teach her Grand-Children about conservation and the love of all animals and nature.</p>
-                    <p>She is retired and lives and works out of her home in Centurion, and is spending her time working on the next book in the series. With the assistance of her husband David, Carol sells her books at various craft markets and direct to schools.</p>
-                </div>
-
-                <div class="about-testimonials fade-in">
-                    <h3>What People Say</h3>
-
-                    <div class="testimonial">
-                        <div class="testimonial-quote">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#F5A623" aria-hidden="true">
-                                <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
-                            </svg>
-                            <p>These charming poems and illustrations are not only highly entertaining and enjoyable, they are also educational. They introduce children to the fun of rhyming words, enlarge vocabulary, and stimulate the imagination.</p>
-                        </div>
-                        <p class="testimonial-author">&mdash; Nicola Obertik, HDE in Education</p>
-                    </div>
-
-                    <div class="testimonial">
-                        <div class="testimonial-quote">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#F5A623" aria-hidden="true">
-                                <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
-                            </svg>
-                            <p>This series of delightful poems and illustrations with their humour, warmth, and sheer sense of joy will surely enchant everyone. Honey Tales is a wonderful contribution to the world of children!</p>
-                        </div>
-                        <p class="testimonial-author">&mdash; Petra Lombard, Franchisor M&amp;T Group</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Book features -->
-            <div class="book-features fade-in">
-                <div class="feature">
-                    <div class="feature-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
-                            <circle cx="24" cy="24" r="22" fill="#4CAF50" opacity="0.15"/>
-                            <text x="24" y="32" text-anchor="middle" font-size="24">11</text>
-                        </svg>
-                    </div>
-                    <h4>11 Poems</h4>
-                    <p>Featuring African animals from Lions to Shongololos</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
-                            <circle cx="24" cy="24" r="22" fill="#FF6B35" opacity="0.15"/>
-                            <path d="M14 10 L34 10 L34 38 L24 33 L14 38Z" stroke="#FF6B35" stroke-width="2.5" fill="none"/>
-                        </svg>
-                    </div>
-                    <h4>Educational</h4>
-                    <p>Introduces rhyming, vocabulary and appreciation for wildlife</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
-                            <circle cx="24" cy="24" r="22" fill="#F5A623" opacity="0.15"/>
-                            <circle cx="24" cy="20" r="8" stroke="#F5A623" stroke-width="2.5" fill="none"/>
-                            <path d="M16 32 Q24 38 32 32" stroke="#F5A623" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h4>For All Ages</h4>
-                    <p>Poems for young and old &ndash; from tots to grandparents</p>
-                </div>
-            </div>
-        </div>
-        <div class="about-wave-bottom">
-            <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-                <path d="M0,40 C480,0 960,80 1440,40 L1440,80 L0,80 Z" fill="#FFF8E7"/>
-            </svg>
         </div>
     </section>
 
@@ -211,64 +119,104 @@
             <h2 class="section-title fade-in">Get in Touch</h2>
             <p class="section-subtitle fade-in">Want to order a copy or find out more? We'd love to hear from you!</p>
 
-            <div class="contact-grid">
-                <div class="contact-info fade-in">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                <polyline points="22,6 12,13 2,6"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h4>Email</h4>
-                            <a href="mailto:honeytalesafrica@gmail.com">honeytalesafrica@gmail.com</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h4>WhatsApp</h4>
-                            <p>Click the green button to chat with us!</p>
-                        </div>
-                    </div>
-
-                    <!-- Decorative bee -->
-                    <div class="contact-decoration">
-                        <img src="assets/images/web/shongololo.png" alt="" aria-hidden="true" width="200">
-                    </div>
+            <form class="contact-form contact-form--centered fade-in" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    <span class="error-message" id="nameError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    <span class="error-message" id="emailError"></span>
                 </div>
 
-                <form class="contact-form fade-in" id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                        <span class="error-message" id="nameError"></span>
+                <!-- Order Books Toggle -->
+                <div class="form-group">
+                    <label class="order-toggle-label">
+                        <input type="checkbox" id="orderBooksToggle">
+                        <span class="order-toggle-box"></span>
+                        I'd like to order books
+                    </label>
+                </div>
+
+                <!-- Book Selector (hidden until toggle checked) -->
+                <div class="book-order-selector" id="bookOrderSelector">
+                    <p class="book-order-heading">Select the books you'd like:</p>
+                    <div class="book-order-grid">
+                        <div class="book-order-tile" data-title="Book 1 – Honey Tales Africa" data-price="180">
+                            <img src="assets/africa-cover.png" alt="Book 1 – Honey Tales Africa">
+                            <span class="book-order-title">Book 1</span>
+                            <div class="book-qty-row">
+                                <button type="button" class="qty-btn qty-minus" aria-label="Remove">−</button>
+                                <span class="qty-display">0</span>
+                                <button type="button" class="qty-btn qty-plus" aria-label="Add">+</button>
+                            </div>
+                        </div>
+                        <div class="book-order-tile" data-title="Book 2 – Goggas &amp; Creepy-Crawlies" data-price="180">
+                            <img src="assets/goggas-cover.png" alt="Book 2 – Goggas">
+                            <span class="book-order-title">Book 2</span>
+                            <div class="book-qty-row">
+                                <button type="button" class="qty-btn qty-minus" aria-label="Remove">−</button>
+                                <span class="qty-display">0</span>
+                                <button type="button" class="qty-btn qty-plus" aria-label="Add">+</button>
+                            </div>
+                        </div>
+                        <div class="book-order-tile" data-title="Book 3 – Furry &amp; Feathered Friends" data-price="180">
+                            <img src="assets/friends-cover.png" alt="Book 3 – Friends">
+                            <span class="book-order-title">Book 3</span>
+                            <div class="book-qty-row">
+                                <button type="button" class="qty-btn qty-minus" aria-label="Remove">−</button>
+                                <span class="qty-display">0</span>
+                                <button type="button" class="qty-btn qty-plus" aria-label="Add">+</button>
+                            </div>
+                        </div>
+                        <div class="book-order-tile" data-title="Book 4 – Wild &amp; Wonderful" data-price="180">
+                            <img src="assets/wild-cover.png" alt="Book 4 – Wild">
+                            <span class="book-order-title">Book 4</span>
+                            <div class="book-qty-row">
+                                <button type="button" class="qty-btn qty-minus" aria-label="Remove">−</button>
+                                <span class="qty-display">0</span>
+                                <button type="button" class="qty-btn qty-plus" aria-label="Add">+</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                        <span class="error-message" id="emailError"></span>
+                    <div class="contact-total-box" id="contactTotalBox">
+                        <span class="order-total-label">Books total</span>
+                        <span class="order-total-amount" id="contactTotalAmount">R0</span>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
-                        <span class="error-message" id="messageError"></span>
+                    <p class="contact-fx-convert" id="contactFxConvert"></p>
+                    <span class="error-message" id="booksError"></span>
+                    <div class="form-group" style="margin-top:16px;">
+                        <label for="deliveryAddress">Delivery Address</label>
+                        <textarea id="deliveryAddress" name="Delivery Address" rows="3" placeholder="Street, suburb, city, postal code"></textarea>
+                        <span class="error-message" id="addressError"></span>
                     </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                    <div class="form-success" id="formSuccess">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                            <polyline points="22 4 12 14.01 9 11.01"/>
-                        </svg>
-                        <p>Thank you for your message! We'll get back to you soon.</p>
+                    <div class="form-group" style="margin-top:-8px;">
+                        <label for="deliveryCountry">Country</label>
+                        <input type="text" id="deliveryCountry" name="Country" placeholder="e.g. South Africa">
+                        <span class="error-message" id="countryError"></span>
                     </div>
-                </form>
-            </div>
+                    <p class="order-note">
+                        📦 Postage costs will apply — we'll confirm the final price with you. Sending this message puts you under no obligation.
+                    </p>
+                    <input type="hidden" id="booksOrdered" name="Books Ordered" value="">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Anything else you'd like to say?"></textarea>
+                    <span class="error-message" id="messageError"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+                <div class="form-success" id="formSuccess">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                    <p>Thank you! We'll be in touch soon.</p>
+                </div>
+            </form>
         </div>
     </section>
 
@@ -290,15 +238,22 @@
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#books">Books</a></li>
                         <li><a href="#animals">Animals</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="about.html">Author</a></li>
+                        <li><a href="order.html">Order</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
                     <h4>Contact</h4>
-                    <p><a href="mailto:honeytalesafrica@gmail.com">honeytalesafrica@gmail.com</a></p>
+                    <p>admin@honeytales.co.za</p>
+                    <div class="footer-social">
+                        <a href="https://facebook.com/honeytalesafrica" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Facebook">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                        <a href="https://instagram.com/honeytalesafrica" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="3"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -321,7 +276,7 @@
             <div class="whatsapp-popup-body">
                 <p>Hi there! Want to order some books? Chat with us on WhatsApp!</p>
             </div>
-            <a href="https://wa.me/PLACEHOLDER_NUMBER?text=Hi!%20I'm%20interested%20in%20Honey%20Tales%20Africa" target="_blank" rel="noopener noreferrer" class="whatsapp-popup-btn">
+            <a href="https://wa.me/27832610732?text=Hi!%20I'm%20interested%20in%20Honey%20Tales%20Africa" target="_blank" rel="noopener noreferrer" class="whatsapp-popup-btn">
                 Start Chat
             </a>
         </div>

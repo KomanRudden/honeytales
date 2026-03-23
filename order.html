@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DBXV2L0RBS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DBXV2L0RBS');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order – Honey Tales Africa</title>
+    <meta name="description" content="Order your copies of Honey Tales Africa by Carol Honey. Books delivered to your door.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/order.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/ht_honeytales_text.png" alt="Honey Tales Africa" class="nav-logo-img">
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#animals">Animals</a></li>
+                <li><a href="about.html">Author</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li class="nav-hidden"><a href="order.html">Order</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Order Page -->
+    <main class="order-page">
+        <div class="container">
+            <div class="order-header">
+                <h1>Order Your Books</h1>
+                <p>Fill in your details and select the books you'd like — we'll be in touch with your total including postage.</p>
+            </div>
+
+            <form class="order-layout" id="orderForm">
+                <!-- Left: Contact & Delivery -->
+                <div class="order-form-col">
+                    <h2 class="order-col-title">Your Details</h2>
+
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Delivery Address</label>
+                        <textarea id="address" name="Delivery Address" rows="3" placeholder="Street, suburb, city, postal code"></textarea>
+                        <span class="error-message" id="addressError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" name="Country" placeholder="e.g. South Africa">
+                        <span class="error-message" id="countryError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message <span class="optional">(optional)</span></label>
+                        <textarea id="message" name="message" rows="3" placeholder="Anything else you'd like to say?"></textarea>
+                    </div>
+
+                    <p class="order-postage-note">
+                        📦 Postage costs will apply — we'll confirm the final price with you. Sending this message puts you under no obligation.
+                    </p>
+
+                    <input type="hidden" id="booksOrdered" name="Books Ordered" value="">
+                    <span class="error-message" id="booksError"></span>
+
+                    <button type="submit" class="btn btn-primary order-submit-btn">Send Order Request</button>
+
+                    <div class="order-success" id="orderSuccess">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                        <p>Thank you! We'll be in touch soon with your total.</p>
+                    </div>
+                </div>
+
+                <!-- Right: Book Selection -->
+                <div class="order-books-col">
+                    <h2 class="order-col-title">Select Your Books</h2>
+                    <p class="order-books-hint">Click + to add copies of each book you'd like</p>
+
+                    <div class="order-book-grid">
+                        <div class="order-book-tile" data-title="Book 1 – Honey Tales Africa" data-price="180">
+                            <img src="assets/africa-cover.png" alt="Book 1 – Honey Tales Africa">
+                            <span class="order-book-label">Book 1 – Honey Tales Africa</span>
+                            <div class="book-qty-row">
+                                <button type="button" class="qty-btn qty-minus" aria-label="Remove">−</button>
+                                <span class="qty-display">0</span>
+                                <button type="button" class="qty-btn qty-plus" aria-label="Add">+</button>
+                            </div>
+                        </div>
+                        <div class="order-book-tile" data-title="Book 2 – Goggas &amp; Creepy-Crawlies" data-price="180">
+                            <img src="assets/goggas-cover.png" alt="Book 2 – Goggas & Creepy-Crawlies">
+                            <span class="order-book-label">Book 2 – Goggas &amp; Creepy-Crawlies</span>
+                            <div class="book-qty-row">
+                                <button type="button" class="qty-btn qty-minus" aria-label="Remove">−</button>
+                                <span class="qty-display">0</span>
+                                <button type="button" class="qty-btn qty-plus" aria-label="Add">+</button>
+                            </div>
+                        </div>
+                        <div class="order-book-tile" data-title="Book 3 – Furry &amp; Feathered Friends" data-price="180">
+                            <img src="assets/friends-cover.png" alt="Book 3 – Furry & Feathered Friends">
+                            <span class="order-book-label">Book 3 – Furry &amp; Feathered Friends</span>
+                            <div class="book-qty-row">
+                                <button type="button" class="qty-btn qty-minus" aria-label="Remove">−</button>
+                                <span class="qty-display">0</span>
+                                <button type="button" class="qty-btn qty-plus" aria-label="Add">+</button>
+                            </div>
+                        </div>
+                        <div class="order-book-tile" data-title="Book 4 – Wild &amp; Wonderful" data-price="180">
+                            <img src="assets/wild-cover.png" alt="Book 4 – Wild & Wonderful">
+                            <span class="order-book-label">Book 4 – Wild &amp; Wonderful</span>
+                            <div class="book-qty-row">
+                                <button type="button" class="qty-btn qty-minus" aria-label="Remove">−</button>
+                                <span class="qty-display">0</span>
+                                <button type="button" class="qty-btn qty-plus" aria-label="Add">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-total-box" id="orderTotalBox">
+                        <span class="order-total-label">Books total</span>
+                        <span class="order-total-amount" id="orderTotalAmount">R0</span>
+                    </div>
+                    <p class="order-fx-convert" id="orderFxConvert"></p>
+                    <p class="order-price-note">R180 per book &bull; Postage calculated on delivery location</p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-wave">
+            <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+                <path d="M0,20 C360,80 720,0 1080,40 C1260,55 1380,30 1440,20 L1440,0 L0,0 Z" fill="#FFF8E7"/>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Honey Tales Africa</h3>
+                    <p>Poems for Young and Old by Carol Honey</p>
+                    <p class="footer-publisher">Published by Hive Publishing &bull; 2016</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#animals">Animals</a></li>
+                        <li><a href="about.html">Author</a></li>
+                        <li><a href="order.html">Order</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>admin@honeytales.co.za</p>
+                    <div class="footer-social">
+                        <a href="https://facebook.com/honeytalesafrica" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Facebook">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                        <a href="https://instagram.com/honeytalesafrica" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="3"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; Carol Honey. All Rights Reserved.</p>
+                <p class="footer-credit">Designed &amp; Built by <a href="https://onzs.co.za" target="_blank" rel="noopener noreferrer">OnesnZeros</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/order.js"></script>
+    <script src="js/main.js" type="module"></script>
+</body>
+</html>

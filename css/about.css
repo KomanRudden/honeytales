@@ -1,0 +1,466 @@
+/* ==========================================
+   Honey Tales Africa - About Page Stylesheet
+   ========================================== */
+
+/* --- About Hero --- */
+.about-hero {
+    position: relative;
+    background: linear-gradient(135deg, #F5A623 0%, #E8921A 30%, #D4793A 60%, #C4651A 100%);
+    padding: 100px 20px 60px;
+    overflow: hidden;
+}
+
+.about-hero-inner {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    min-height: 50vh;
+}
+
+.about-hero-photo {
+    flex: 0 0 280px;
+    animation: float1 5s ease-in-out infinite;
+}
+
+.about-author-img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    display: block;
+}
+
+.about-hero-text {
+    flex: 1;
+}
+
+.about-tag {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: var(--white);
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 0.95rem;
+    padding: 5px 18px;
+    border-radius: 50px;
+    margin-bottom: 16px;
+}
+
+.about-hero-text h1 {
+    font-size: 3.2rem;
+    color: var(--white);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    margin-bottom: 8px;
+    line-height: 1.1;
+}
+
+.about-hero-role {
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 20px;
+}
+
+.about-hero-intro {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8;
+    max-width: 520px;
+}
+
+.about-hero-wave {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    z-index: 3;
+}
+
+.about-hero-wave svg {
+    display: block;
+    width: 100%;
+    height: 80px;
+}
+
+/* --- Biography --- */
+.bio-section {
+    background: var(--cream);
+    padding: 80px 0;
+}
+
+.bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.bio-text h2 {
+    font-size: 2rem;
+    color: var(--brown);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.bio-text p {
+    color: var(--text-muted);
+    line-height: 1.9;
+    margin-bottom: 18px;
+    font-size: 1.05rem;
+}
+
+.bio-highlights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.bio-highlight-card {
+    border-radius: var(--radius);
+    padding: 24px 20px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+    border-top: 4px solid transparent;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.bio-highlight-card:nth-child(1) {
+    background: linear-gradient(160deg, #FFFCF0, #FFF3CC);
+    border-top-color: #F5A623;
+}
+
+.bio-highlight-card:nth-child(2) {
+    background: linear-gradient(160deg, #FFF6F3, #FFE6DC);
+    border-top-color: #E8775A;
+}
+
+.bio-highlight-card:nth-child(3) {
+    background: linear-gradient(160deg, #F0F7FF, #D8EEFF);
+    border-top-color: #5BA3C9;
+}
+
+.bio-highlight-card:nth-child(4) {
+    background: linear-gradient(160deg, #FFF0F5, #FFD6E8);
+    border-top-color: #D9729A;
+}
+
+.bio-highlight-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.bio-highlight-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FFF8E7, #FFE9A0);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+}
+
+.bio-highlight-icon img {
+    width: 46px;
+    height: 46px;
+    object-fit: contain;
+}
+
+.bio-highlight-card h3 {
+    font-size: 1.2rem;
+    color: var(--brown);
+    margin-bottom: 6px;
+}
+
+.bio-highlight-card p {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* --- What Makes the Books Special --- */
+.about-features-section {
+    background: linear-gradient(135deg, #FFF3D4, #FFE8C2);
+    padding: 80px 0;
+}
+
+.about-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.about-feature {
+    border-radius: var(--radius);
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border-top: 4px solid transparent;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.about-feature:nth-child(1) {
+    background: linear-gradient(160deg, #FFFCF0, #FFF3CC);
+    border-top-color: #F5A623;
+}
+
+.about-feature:nth-child(2) {
+    background: linear-gradient(160deg, #FFF6F3, #FFE6DC);
+    border-top-color: #E8775A;
+}
+
+.about-feature:nth-child(3) {
+    background: linear-gradient(160deg, #F0F7FF, #D8EEFF);
+    border-top-color: #5BA3C9;
+}
+
+.about-feature:nth-child(4) {
+    background: linear-gradient(160deg, #FFF0F5, #FFD6E8);
+    border-top-color: #D9729A;
+}
+
+.about-feature:nth-child(5) {
+    background: linear-gradient(160deg, #F2FFF0, #D6F5CC);
+    border-top-color: #6BBF5A;
+}
+
+.about-feature:nth-child(6) {
+    background: linear-gradient(160deg, #FFF8F0, #FFE8CC);
+    border-top-color: #E8A040;
+}
+
+.about-feature:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.about-feature-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FFF8E7, #FFE9A0);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+}
+
+.about-feature-icon img {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+}
+
+.about-feature h3 {
+    font-size: 1.2rem;
+    color: var(--brown);
+    margin-bottom: 10px;
+}
+
+.about-feature p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* --- Testimonials --- */
+.about-testimonials-section {
+    background: linear-gradient(135deg, #FFF3D4, #FFE8C2);
+    padding: 80px 0;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.testimonial-card {
+    border-radius: var(--radius);
+    padding: 32px 28px 24px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    overflow: hidden;
+    border-top: 4px solid transparent;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.testimonial-card::before {
+    content: '\201C';
+    position: absolute;
+    top: -10px;
+    left: 16px;
+    font-size: 7rem;
+    line-height: 1;
+    font-family: Georgia, serif;
+    opacity: 0.15;
+    color: var(--brown);
+    pointer-events: none;
+}
+
+.testimonial-card:nth-child(1) {
+    background: linear-gradient(160deg, #FFFCF0, #FFF3CC);
+    border-top-color: #F5A623;
+}
+
+.testimonial-card:nth-child(2) {
+    background: linear-gradient(160deg, #FFF6F3, #FFE6DC);
+    border-top-color: #E8775A;
+}
+
+.testimonial-card:nth-child(3) {
+    background: linear-gradient(160deg, #F0F7FF, #D8EEFF);
+    border-top-color: #5BA3C9;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.testimonial-stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 14px;
+}
+
+.testimonial-stars span {
+    font-size: 1.1rem;
+    color: #F5A623;
+}
+
+.testimonial-quote {
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    flex: 1;
+    margin-bottom: 20px;
+}
+
+.testimonial-author-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(0,0,0,0.07);
+}
+
+.testimonial-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 1rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.testimonial-card:nth-child(1) .testimonial-avatar { background: linear-gradient(135deg, #F5A623, #E8921A); }
+.testimonial-card:nth-child(2) .testimonial-avatar { background: linear-gradient(135deg, #E8775A, #D4532E); }
+.testimonial-card:nth-child(3) .testimonial-avatar { background: linear-gradient(135deg, #5BA3C9, #3A7DA0); }
+
+.testimonial-author-info strong {
+    display: block;
+    font-weight: 700;
+    color: var(--brown);
+    font-size: 0.9rem;
+}
+
+.testimonial-author-info span {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* --- Order Section (reuse from books.css) --- */
+.order-section {
+    background: var(--cream);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.order-section h2 {
+    font-size: 2.4rem;
+    color: var(--brown);
+    margin-bottom: 12px;
+}
+
+.order-section p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 32px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.order-ctas {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* --- Responsive --- */
+@media (max-width: 968px) {
+    .about-hero-inner {
+        flex-direction: column;
+        gap: 36px;
+        min-height: auto;
+        text-align: center;
+    }
+
+    .about-hero-photo {
+        flex: none;
+        width: 220px;
+    }
+
+    .about-hero-intro {
+        margin: 0 auto;
+    }
+
+    .bio-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .about-features-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        max-width: 520px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-hero-text h1 {
+        font-size: 2.4rem;
+    }
+
+    .about-features-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .bio-highlights {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .bio-highlights {
+        grid-template-columns: 1fr;
+    }
+}
