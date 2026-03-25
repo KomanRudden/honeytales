@@ -141,11 +141,20 @@ img {
 .free-delivery-icon {
     font-size: 1.3rem;
     line-height: 1;
+    flex-shrink: 0;
 }
 
-/* Push navbar below the fixed banner (~43px tall) */
+.fd-short { display: none; }
+.fd-long  { display: inline; }
+
+/* Push navbar below the fixed banner — JS sets --banner-h precisely, this is the CSS fallback */
 body:has(.free-delivery-banner) .navbar {
-    top: 43px;
+    top: var(--banner-h, 43px);
+}
+
+/* Also update scroll-padding so anchor links clear the full header */
+body:has(.free-delivery-banner) {
+    scroll-padding-top: var(--header-h, 150px);
 }
 
 /* --- Navigation --- */
@@ -1914,15 +1923,24 @@ body:has(.free-delivery-banner) .navbar {
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 560px) {
+    /* Hide banner on the landing page (index) — too cramped on small screens */
+    body.page-home .free-delivery-banner {
+        display: none;
+    }
+
+    /* Switch to shorter text so banner stays single-line on other pages */
+    .fd-long  { display: none; }
+    .fd-short { display: inline; }
+
     .free-delivery-banner {
-        font-size: 0.78rem;
-        padding: 8px 10px;
-        gap: 5px;
+        font-size: 0.88rem;
+        padding: 10px 12px;
+        gap: 8px;
     }
 
     body:has(.free-delivery-banner) .navbar {
-        top: 35px;
+        top: var(--banner-h, 43px);
     }
 }
 

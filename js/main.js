@@ -2,6 +2,32 @@
    Honey Tales Africa - Main JavaScript
    ========================================== */
 
+// --- Banner height sync (runs immediately, before DOMContentLoaded) ---
+(function syncBannerOffset() {
+    function update() {
+        const banner = document.querySelector('.free-delivery-banner');
+        const navbar = document.getElementById('navbar');
+        if (!banner || !navbar) return;
+
+        const bannerH = banner.offsetHeight;
+        navbar.style.top = bannerH + 'px';
+
+        requestAnimationFrame(function() {
+            const totalH = bannerH + navbar.offsetHeight;
+            document.documentElement.style.setProperty('--banner-h', bannerH + 'px');
+
+            // Push each page's top section below the full header
+            const hero = document.querySelector('.about-hero');
+            if (hero) hero.style.paddingTop = (totalH + 20) + 'px';
+
+            const orderPage = document.querySelector('.order-page');
+            if (orderPage) orderPage.style.paddingTop = (totalH + 40) + 'px';
+        });
+    }
+    document.addEventListener('DOMContentLoaded', update);
+    window.addEventListener('resize', update);
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Live exchange rates (ZAR) ---

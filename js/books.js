@@ -2,6 +2,32 @@
    Honey Tales Africa - Book Pages JavaScript
    ========================================== */
 
+// --- Banner height sync (runs immediately, before DOMContentLoaded) ---
+(function syncBannerOffset() {
+    function update() {
+        const banner = document.querySelector('.free-delivery-banner');
+        const navbar = document.getElementById('navbar');
+        if (!banner || !navbar) return;
+
+        // 1. Position navbar below banner
+        const bannerH = banner.offsetHeight;
+        navbar.style.top = bannerH + 'px';
+
+        // 2. After browser reflows navbar, measure total header height
+        // and push hero content below it
+        requestAnimationFrame(function() {
+            const totalH = bannerH + navbar.offsetHeight;
+            document.documentElement.style.setProperty('--banner-h', bannerH + 'px');
+
+            // Directly set padding on the hero so there's no CSS variable timing gap
+            const hero = document.querySelector('.book-hero');
+            if (hero) hero.style.paddingTop = (totalH + 20) + 'px';
+        });
+    }
+    document.addEventListener('DOMContentLoaded', update);
+    window.addEventListener('resize', update);
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Mobile Navigation Toggle ---

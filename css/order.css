@@ -5,7 +5,7 @@
 .order-page {
     background: var(--cream);
     min-height: 100vh;
-    padding: 180px 20px 80px;
+    padding: 200px 20px 80px;
 }
 
 .order-header {
@@ -219,6 +219,6 @@
 
 @media (max-width: 600px) {
     .order-page {
-        padding-top: 170px;
+        padding-top: 200px;
     }
 }
