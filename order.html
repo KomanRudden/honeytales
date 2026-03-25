@@ -21,11 +21,18 @@
 </head>
 <body>
 
+    <!-- Free Delivery Banner -->
+    <div class="free-delivery-banner">
+        <span class="free-delivery-icon">🚚</span>
+        <span class="free-delivery-text">Order all 4 books and get <strong>free courier delivery</strong> anywhere in South Africa!</span>
+        <span class="free-delivery-icon">🇿🇦</span>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="assets/ht_honeytales_text.png" alt="Honey Tales Africa" class="nav-logo-img">
+            <a href="/" class="nav-logo">
+                <img src="assets/images/bee.png" alt="Honey Tales Africa" class="nav-logo-img">
             </a>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                 <span></span>
@@ -33,10 +40,10 @@
                 <span></span>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#animals">Animals</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/#animals">Animals</a></li>
                 <li><a href="about.html">Author</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="/#contact">Contact</a></li>
                 <li class="nav-hidden"><a href="order.html">Order</a></li>
             </ul>
         </div>
@@ -47,7 +54,9 @@
         <div class="container">
             <div class="order-header">
                 <h1>Order Your Books</h1>
-                <p>Fill in your details and select the books you'd like — we'll be in touch with your total including postage.</p>
+                <p>Fill in your details and select the books you'd like — 
+                    we'll be in touch with your total including courier delivery. 
+                    Order all 4 books and get free courier delivery anywhere in South Africa!</p>
             </div>
 
             <form class="order-layout" id="orderForm">
@@ -56,22 +65,27 @@
                     <h2 class="order-col-title">Your Details</h2>
 
                     <div class="form-group">
-                        <label for="name">Your Name</label>
+                        <label for="name">Your Name <span class="required">*</span></label>
                         <input type="text" id="name" name="name" placeholder="Enter your name" required>
                         <span class="error-message" id="nameError"></span>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email Address</label>
+                        <label for="email">Email Address <span class="required">*</span></label>
                         <input type="email" id="email" name="email" placeholder="Enter your email" required>
                         <span class="error-message" id="emailError"></span>
                     </div>
                     <div class="form-group">
-                        <label for="address">Delivery Address</label>
+                        <label for="phone">Cell Number <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="e.g. 083 261 0732" required>
+                        <span class="error-message" id="phoneError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Delivery Address <span class="required">*</span></label>
                         <textarea id="address" name="Delivery Address" rows="3" placeholder="Street, suburb, city, postal code"></textarea>
                         <span class="error-message" id="addressError"></span>
                     </div>
                     <div class="form-group">
-                        <label for="country">Country</label>
+                        <label for="country">Country <span class="required">*</span></label>
                         <input type="text" id="country" name="Country" placeholder="e.g. South Africa">
                         <span class="error-message" id="countryError"></span>
                     </div>
@@ -81,7 +95,7 @@
                     </div>
 
                     <p class="order-postage-note">
-                        📦 Postage costs will apply — we'll confirm the final price with you. Sending this message puts you under no obligation.
+                        📦 Order all 4 books and get <strong>free courier delivery</strong> anywhere in South Africa! Otherwise, postage costs will apply — we'll confirm the final price with you. Sending this message puts you under no obligation.
                     </p>
 
                     <input type="hidden" id="booksOrdered" name="Books Ordered" value="">
@@ -105,7 +119,7 @@
 
                     <div class="order-book-grid">
                         <div class="order-book-tile" data-title="Book 1 – Honey Tales Africa" data-price="180">
-                            <img src="assets/africa-cover.png" alt="Book 1 – Honey Tales Africa">
+                            <img src="assets/images/africa-cover.png" alt="Book 1 – Honey Tales Africa">
                             <span class="order-book-label">Book 1 – Honey Tales Africa</span>
                             <div class="book-qty-row">
                                 <button type="button" class="qty-btn qty-minus" aria-label="Remove">−</button>
@@ -114,7 +128,7 @@
                             </div>
                         </div>
                         <div class="order-book-tile" data-title="Book 2 – Goggas &amp; Creepy-Crawlies" data-price="180">
-                            <img src="assets/goggas-cover.png" alt="Book 2 – Goggas & Creepy-Crawlies">
+                            <img src="assets/images/goggas-cover.png" alt="Book 2 – Goggas & Creepy-Crawlies">
                             <span class="order-book-label">Book 2 – Goggas &amp; Creepy-Crawlies</span>
                             <div class="book-qty-row">
                                 <button type="button" class="qty-btn qty-minus" aria-label="Remove">−</button>
@@ -123,7 +137,7 @@
                             </div>
                         </div>
                         <div class="order-book-tile" data-title="Book 3 – Furry &amp; Feathered Friends" data-price="180">
-                            <img src="assets/friends-cover.png" alt="Book 3 – Furry & Feathered Friends">
+                            <img src="assets/images/friends-cover.png" alt="Book 3 – Furry & Feathered Friends">
                             <span class="order-book-label">Book 3 – Furry &amp; Feathered Friends</span>
                             <div class="book-qty-row">
                                 <button type="button" class="qty-btn qty-minus" aria-label="Remove">−</button>
@@ -132,7 +146,7 @@
                             </div>
                         </div>
                         <div class="order-book-tile" data-title="Book 4 – Wild &amp; Wonderful" data-price="180">
-                            <img src="assets/wild-cover.png" alt="Book 4 – Wild & Wonderful">
+                            <img src="assets/images/wild-cover.png" alt="Book 4 – Wild & Wonderful">
                             <span class="order-book-label">Book 4 – Wild &amp; Wonderful</span>
                             <div class="book-qty-row">
                                 <button type="button" class="qty-btn qty-minus" aria-label="Remove">−</button>
@@ -147,7 +161,7 @@
                         <span class="order-total-amount" id="orderTotalAmount">R0</span>
                     </div>
                     <p class="order-fx-convert" id="orderFxConvert"></p>
-                    <p class="order-price-note">R180 per book &bull; Postage calculated on delivery location</p>
+                    <p class="order-price-note">R180 per book &bull; Free courier delivery in SA when you order all 4!</p>
                 </div>
             </form>
         </div>
@@ -170,15 +184,15 @@
                 <div class="footer-links">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#animals">Animals</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/#animals">Animals</a></li>
                         <li><a href="about.html">Author</a></li>
                         <li><a href="order.html">Order</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
                     <h4>Contact</h4>
-                    <p>admin@honeytales.co.za</p>
+                    <p><a href="/#contact">admin@honeytales.co.za</a></p>
                     <div class="footer-social">
                         <a href="https://facebook.com/honeytalesafrica" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Facebook">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>

@@ -4,13 +4,15 @@
 
 /* --- Variables --- */
 :root {
-    --honey: #F5A623;
-    --honey-dark: #D4881F;
+    --honey: #D4962A;
+    --honey-dark: #B87D22;
+    --action: #3A7B5A;
+    --action-dark: #2D6346;
     --safari-green: #4CAF50;
     --safari-green-dark: #388E3C;
     --sunset-orange: #FF6B35;
-    --brown: #8B4513;
-    --brown-light: #A0522D;
+    --brown: #2B503F;
+    --brown-light: #3A6B50;
     --cream: #FFF8E7;
     --sky-blue: #87CEEB;
     --white: #ffffff;
@@ -52,7 +54,7 @@ h1, h2, h3, h4 {
 }
 
 a {
-    color: var(--honey-dark);
+    color: var(--action);
     text-decoration: none;
     transition: color var(--transition);
 }
@@ -86,16 +88,16 @@ img {
 }
 
 .btn-primary {
-    background: var(--honey);
+    background: var(--action);
     color: var(--white);
-    box-shadow: 0 4px 15px rgba(245, 166, 35, 0.4);
+    box-shadow: 0 4px 15px rgba(43, 80, 63, 0.35);
 }
 
 .btn-primary:hover {
-    background: var(--honey-dark);
+    background: var(--action-dark);
     color: var(--white);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(245, 166, 35, 0.5);
+    box-shadow: 0 6px 20px rgba(43, 80, 63, 0.45);
 }
 
 .btn-secondary {
@@ -109,6 +111,41 @@ img {
     color: var(--white);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(76, 175, 80, 0.5);
+}
+
+/* --- Free Delivery Banner --- */
+.free-delivery-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1100;
+    background: #2B503F;
+    border-bottom: 3px solid var(--honey);
+    color: #fff;
+    text-align: center;
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+}
+
+.free-delivery-banner strong {
+    color: var(--honey);
+}
+
+.free-delivery-icon {
+    font-size: 1.3rem;
+    line-height: 1;
+}
+
+/* Push navbar below the fixed banner (~43px tall) */
+body:has(.free-delivery-banner) .navbar {
+    top: 43px;
 }
 
 /* --- Navigation --- */
@@ -177,7 +214,7 @@ img {
 }
 
 .nav-links a:hover {
-    background: var(--honey);
+    background: var(--action);
     color: var(--white);
 }
 
@@ -226,7 +263,7 @@ img {
     align-items: center;
     justify-content: center;
     gap: 28px;
-    background: linear-gradient(135deg, #6BBF4E 0%, #8DC63F 30%, #B8D94A 50%, #87CEEB 100%);
+    background: linear-gradient(160deg, #3A6B50 0%, #2B503F 60%, #223F32 100%);
     padding: 80px 20px 20px;
     overflow: hidden;
 }
@@ -816,9 +853,22 @@ img {
 .animal-gallery {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 60px;
     margin-bottom: 50px;
     position: relative;
+}
+
+.animal-item--meerkat {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.animal-item.animal-item--meerkat > img {
+    max-height: 200px !important;
+    width: auto;
 }
 
 .animal-item {
@@ -1123,6 +1173,11 @@ img {
     font-size: 0.95rem;
 }
 
+.required {
+    color: #D32F2F;
+    font-weight: 700;
+}
+
 .form-group input,
 .form-group textarea {
     width: 100%;
@@ -1139,7 +1194,7 @@ img {
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: var(--honey);
+    border-color: var(--action);
     background: var(--white);
 }
 
@@ -1189,9 +1244,9 @@ img {
     width: 26px;
     height: 26px;
     border-radius: 50%;
-    border: 2px solid var(--honey);
+    border: 2px solid var(--action);
     background: var(--white);
-    color: var(--honey);
+    color: var(--action);
     font-size: 1rem;
     font-weight: 700;
     line-height: 1;
@@ -1204,7 +1259,7 @@ img {
 }
 
 .qty-btn:hover {
-    background: var(--honey);
+    background: var(--action);
     color: var(--white);
 }
 
@@ -1241,7 +1296,7 @@ img {
 .order-toggle-box {
     width: 22px;
     height: 22px;
-    border: 2px solid var(--honey);
+    border: 2px solid var(--action);
     border-radius: 6px;
     background: var(--white);
     flex-shrink: 0;
@@ -1252,8 +1307,8 @@ img {
 }
 
 .order-toggle-label input[type="checkbox"]:checked + .order-toggle-box {
-    background: var(--honey);
-    border-color: var(--honey);
+    background: var(--action);
+    border-color: var(--action);
 }
 
 .order-toggle-label input[type="checkbox"]:checked + .order-toggle-box::after {
@@ -1324,18 +1379,18 @@ img {
 }
 
 .book-order-tile.has-qty {
-    border-color: var(--honey);
+    border-color: var(--action);
     transform: translateY(-3px);
     box-shadow: var(--shadow-hover);
 }
 
 .book-order-tile.has-qty .book-order-title {
-    background: var(--honey);
+    background: var(--action);
     color: var(--white);
 }
 
 .book-order-tile.has-qty .book-qty-row {
-    background: var(--honey);
+    background: var(--action);
 }
 
 /* --- Contact section total --- */
@@ -1344,7 +1399,7 @@ img {
     align-items: center;
     justify-content: space-between;
     background: var(--white);
-    border: 2px solid var(--honey);
+    border: 2px solid var(--action);
     border-radius: var(--radius-sm);
     padding: 10px 16px;
     margin: 12px 0 4px;
@@ -1359,14 +1414,14 @@ img {
 .order-total-amount {
     font-family: 'Bubblegum Sans', cursive;
     font-size: 1.4rem;
-    color: var(--honey);
+    color: var(--action);
 }
 
 .order-note {
     font-size: 0.85rem;
     color: var(--text-muted);
     background: #FFF8E7;
-    border-left: 3px solid var(--honey);
+    border-left: 3px solid var(--action);
     padding: 10px 14px;
     border-radius: 0 8px 8px 0;
     line-height: 1.6;
@@ -1375,7 +1430,7 @@ img {
 
 /* --- Footer --- */
 .footer {
-    background: var(--brown);
+    background: #2B503F;
     color: rgba(255, 255, 255, 0.8);
     position: relative;
     padding-top: 0;
@@ -1516,20 +1571,24 @@ img {
     box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
 }
 
-.whatsapp-badge {
+.whatsapp-fab::before {
+    content: "";
     position: absolute;
-    top: -2px;
-    right: -2px;
-    width: 20px;
-    height: 20px;
-    background: var(--sunset-orange);
-    color: white;
+    inset: -4px;
     border-radius: 50%;
-    font-size: 0.75rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border: 2px solid #25D366;
+    animation: 2.4s ease-out 0s infinite normal none running waPulse;
+}
+
+@keyframes waPulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.6);
+        opacity: 0;
+    }
 }
 
 .whatsapp-popup {
@@ -1855,6 +1914,18 @@ img {
     }
 }
 
+@media (max-width: 600px) {
+    .free-delivery-banner {
+        font-size: 0.78rem;
+        padding: 8px 10px;
+        gap: 5px;
+    }
+
+    body:has(.free-delivery-banner) .navbar {
+        top: 35px;
+    }
+}
+
 @media (max-width: 768px) {
     .nav-toggle {
         display: flex;
@@ -1998,7 +2069,9 @@ img {
    (used by books.css and about.css)
    ========================================== */
 
-/* Card entrances */
+/* ---- Card entrance keyframes ---- */
+
+/* 0: Giraffe — gentle bulge + micro-wobble */
 @keyframes fc-bulge {
     0%   { transform: scale(1) translateY(0) rotate(0deg); }
     28%  { transform: scale(1.08) translateY(-9px) rotate(-1.8deg); }
@@ -2007,6 +2080,7 @@ img {
     82%  { transform: scale(1.052) translateY(-7px) rotate(0.3deg); }
     100% { transform: scale(1.05) translateY(-7px) rotate(0deg); }
 }
+/* 1: Elephant — tilt sway */
 @keyframes fc-tilt {
     0%   { transform: translateY(0) rotate(0deg) scale(1); }
     30%  { transform: translateY(-11px) rotate(-3deg) scale(1.07); }
@@ -2015,6 +2089,7 @@ img {
     85%  { transform: translateY(-8px) rotate(0.5deg) scale(1.052); }
     100% { transform: translateY(-8px) rotate(0deg) scale(1.05); }
 }
+/* 2: Lion — bouncy pop */
 @keyframes fc-pop {
     0%   { transform: scale(1) translateY(0); }
     22%  { transform: scale(1.1) translateY(-12px); }
@@ -2024,20 +2099,101 @@ img {
     90%  { transform: scale(1.055) translateY(-8px); }
     100% { transform: scale(1.05) translateY(-7px); }
 }
+/* 3: Bee — quick lift with vibration */
+@keyframes fc-lift {
+    0%   { transform: translateY(0) scale(1); }
+    20%  { transform: translateY(-10px) scale(1.06); }
+    40%  { transform: translateY(-7px) scale(1.04); }
+    60%  { transform: translateY(-9px) scale(1.055); }
+    80%  { transform: translateY(-8px) scale(1.05); }
+    100% { transform: translateY(-8px) scale(1.05); }
+}
+/* 4: Ladybird — gentle swell */
+@keyframes fc-swell {
+    0%   { transform: scale(1) translateY(0); }
+    35%  { transform: scale(1.07) translateY(-6px); }
+    55%  { transform: scale(1.04) translateY(-5px); }
+    75%  { transform: scale(1.06) translateY(-7px); }
+    100% { transform: scale(1.05) translateY(-7px); }
+}
+/* 5: Mosquito — lean right */
+@keyframes fc-lean {
+    0%   { transform: rotate(0deg) scale(1) translateY(0); }
+    30%  { transform: rotate(2.5deg) scale(1.06) translateY(-8px); }
+    55%  { transform: rotate(-1.5deg) scale(1.04) translateY(-6px); }
+    75%  { transform: rotate(1deg) scale(1.055) translateY(-7px); }
+    100% { transform: rotate(0deg) scale(1.05) translateY(-7px); }
+}
+/* 6: Frog — spring up */
+@keyframes fc-spring {
+    0%   { transform: scale(1) translateY(0); }
+    15%  { transform: scale(0.97, 1.04) translateY(3px); }
+    35%  { transform: scale(1.09) translateY(-14px); }
+    55%  { transform: scale(1.03) translateY(-5px); }
+    70%  { transform: scale(1.06) translateY(-9px); }
+    85%  { transform: scale(1.048) translateY(-7px); }
+    100% { transform: scale(1.05) translateY(-7px); }
+}
+/* 7: Baboon — playful rock */
+@keyframes fc-rock {
+    0%   { transform: rotate(0deg) translateY(0) scale(1); }
+    18%  { transform: rotate(-2deg) translateY(-6px) scale(1.04); }
+    36%  { transform: rotate(2.5deg) translateY(-10px) scale(1.07); }
+    54%  { transform: rotate(-1.5deg) translateY(-8px) scale(1.05); }
+    72%  { transform: rotate(1deg) translateY(-7px) scale(1.052); }
+    100% { transform: rotate(0deg) translateY(-7px) scale(1.05); }
+}
+/* 8: Warthog — forward jolt */
+@keyframes fc-jolt {
+    0%   { transform: scale(1) translateY(0) translateX(0); }
+    20%  { transform: scale(1.06) translateY(-5px) translateX(4px); }
+    40%  { transform: scale(1.04) translateY(-7px) translateX(-2px); }
+    60%  { transform: scale(1.055) translateY(-8px) translateX(1px); }
+    80%  { transform: scale(1.05) translateY(-7px) translateX(0); }
+    100% { transform: scale(1.05) translateY(-7px) translateX(0); }
+}
+/* 9: Hippo — heavy settle */
+@keyframes fc-settle {
+    0%   { transform: scale(1) translateY(0); }
+    20%  { transform: scale(1.09) translateY(-4px); }
+    40%  { transform: scale(1.03) translateY(-8px); }
+    55%  { transform: scale(1.07) translateY(-6px); }
+    70%  { transform: scale(1.045) translateY(-7px); }
+    85%  { transform: scale(1.055) translateY(-7px); }
+    100% { transform: scale(1.05) translateY(-7px); }
+}
+/* 10: Cheetah — fast slide */
+@keyframes fc-slide {
+    0%   { transform: translateX(0) translateY(0) scale(1); }
+    25%  { transform: translateX(-6px) translateY(-9px) scale(1.07); }
+    45%  { transform: translateX(3px) translateY(-6px) scale(1.04); }
+    65%  { transform: translateX(-1px) translateY(-8px) scale(1.055); }
+    100% { transform: translateX(0) translateY(-7px) scale(1.05); }
+}
+/* 11: Crocodile — lurching rise */
+@keyframes fc-lurch {
+    0%   { transform: scale(1) translateY(0) rotate(0deg); }
+    25%  { transform: scale(1.04) translateY(-3px) rotate(1.5deg); }
+    45%  { transform: scale(1.08) translateY(-10px) rotate(-1deg); }
+    65%  { transform: scale(1.05) translateY(-7px) rotate(0.5deg); }
+    85%  { transform: scale(1.052) translateY(-7px) rotate(-0.2deg); }
+    100% { transform: scale(1.05) translateY(-7px) rotate(0deg); }
+}
 
-/* Card exits */
+/* ---- Card exit keyframes ---- */
+
 @keyframes fc-bulge-out {
     0%   { transform: scale(1.05) translateY(-7px) rotate(0deg); }
     22%  { transform: scale(1.02) translateY(-3px) rotate(1.4deg); }
     48%  { transform: scale(1.01) translateY(-1px) rotate(-0.8deg); }
-    72%  { transform: scale(1.005) translateY(0px) rotate(0.4deg); }
+    72%  { transform: scale(1.005) translateY(0) rotate(0.4deg); }
     100% { transform: scale(1) translateY(0) rotate(0deg); }
 }
 @keyframes fc-tilt-out {
     0%   { transform: translateY(-8px) rotate(0deg) scale(1.05); }
     25%  { transform: translateY(-4px) rotate(2.5deg) scale(1.02); }
     55%  { transform: translateY(-1px) rotate(-1.2deg) scale(1.01); }
-    80%  { transform: translateY(0px) rotate(0.5deg) scale(1.002); }
+    80%  { transform: translateY(0) rotate(0.5deg) scale(1.002); }
     100% { transform: translateY(0) rotate(0deg) scale(1); }
 }
 @keyframes fc-pop-out {
@@ -2047,8 +2203,64 @@ img {
     68%  { transform: scale(0.995) translateY(-1px); }
     100% { transform: scale(1) translateY(0); }
 }
+@keyframes fc-lift-out {
+    0%   { transform: translateY(-8px) scale(1.05); }
+    40%  { transform: translateY(-3px) scale(1.02); }
+    70%  { transform: translateY(-1px) scale(1.005); }
+    100% { transform: translateY(0) scale(1); }
+}
+@keyframes fc-swell-out {
+    0%   { transform: scale(1.05) translateY(-7px); }
+    35%  { transform: scale(1.02) translateY(-3px); }
+    65%  { transform: scale(1.008) translateY(-1px); }
+    100% { transform: scale(1) translateY(0); }
+}
+@keyframes fc-lean-out {
+    0%   { transform: rotate(0deg) scale(1.05) translateY(-7px); }
+    30%  { transform: rotate(1.5deg) scale(1.02) translateY(-3px); }
+    60%  { transform: rotate(-0.5deg) scale(1.008) translateY(-1px); }
+    100% { transform: rotate(0deg) scale(1) translateY(0); }
+}
+@keyframes fc-spring-out {
+    0%   { transform: scale(1.05) translateY(-7px); }
+    30%  { transform: scale(1.01) translateY(-2px); }
+    55%  { transform: scale(1.02) translateY(1px); }
+    100% { transform: scale(1) translateY(0); }
+}
+@keyframes fc-rock-out {
+    0%   { transform: rotate(0deg) translateY(-7px) scale(1.05); }
+    30%  { transform: rotate(1.5deg) translateY(-3px) scale(1.02); }
+    60%  { transform: rotate(-0.8deg) translateY(-1px) scale(1.008); }
+    100% { transform: rotate(0deg) translateY(0) scale(1); }
+}
+@keyframes fc-jolt-out {
+    0%   { transform: scale(1.05) translateY(-7px) translateX(0); }
+    30%  { transform: scale(1.02) translateY(-3px) translateX(-2px); }
+    60%  { transform: scale(1.008) translateY(-1px) translateX(1px); }
+    100% { transform: scale(1) translateY(0) translateX(0); }
+}
+@keyframes fc-settle-out {
+    0%   { transform: scale(1.05) translateY(-7px); }
+    25%  { transform: scale(1.03) translateY(-4px); }
+    50%  { transform: scale(1.01) translateY(-2px); }
+    100% { transform: scale(1) translateY(0); }
+}
+@keyframes fc-slide-out {
+    0%   { transform: translateX(0) translateY(-7px) scale(1.05); }
+    35%  { transform: translateX(3px) translateY(-3px) scale(1.02); }
+    65%  { transform: translateX(-1px) translateY(-1px) scale(1.005); }
+    100% { transform: translateX(0) translateY(0) scale(1); }
+}
+@keyframes fc-lurch-out {
+    0%   { transform: scale(1.05) translateY(-7px) rotate(0deg); }
+    30%  { transform: scale(1.02) translateY(-3px) rotate(-1deg); }
+    60%  { transform: scale(1.008) translateY(-1px) rotate(0.4deg); }
+    100% { transform: scale(1) translateY(0) rotate(0deg); }
+}
 
-/* Icon entrances */
+/* ---- Icon entrance keyframes ---- */
+
+/* 0: Giraffe — stretch tall (grows vertically) */
 @keyframes fi-magnify {
     0%   { transform: scale(1) rotate(0deg); }
     30%  { transform: scale(1.85) rotate(-8deg); }
@@ -2057,6 +2269,7 @@ img {
     88%  { transform: scale(1.48) rotate(1deg); }
     100% { transform: scale(1.5) rotate(0deg); }
 }
+/* 1: Elephant — slow trunk spin */
 @keyframes fi-spin {
     0%   { transform: scale(1) rotate(0deg); }
     35%  { transform: scale(1.6) rotate(200deg); }
@@ -2065,6 +2278,7 @@ img {
     92%  { transform: scale(1.47) rotate(178deg); }
     100% { transform: scale(1.5) rotate(180deg); }
 }
+/* 2: Lion — powerful bounce */
 @keyframes fi-bounce {
     0%   { transform: scale(1) translateY(0); }
     20%  { transform: scale(1.65) translateY(-12px); }
@@ -2074,8 +2288,107 @@ img {
     87%  { transform: scale(1.5) translateY(-8px); }
     100% { transform: scale(1.5) translateY(-8px); }
 }
+/* 3: Bee — rapid buzz vibration */
+@keyframes fi-buzz {
+    0%   { transform: scale(1) translate(0, 0) rotate(0deg); }
+    10%  { transform: scale(1.3) translate(3px, -2px) rotate(5deg); }
+    20%  { transform: scale(1.35) translate(-3px, 1px) rotate(-4deg); }
+    30%  { transform: scale(1.4) translate(2px, -3px) rotate(3deg); }
+    40%  { transform: scale(1.42) translate(-2px, 2px) rotate(-3deg); }
+    50%  { transform: scale(1.45) translate(3px, -1px) rotate(4deg); }
+    60%  { transform: scale(1.47) translate(-1px, -2px) rotate(-2deg); }
+    70%  { transform: scale(1.48) translate(2px, 1px) rotate(2deg); }
+    80%  { transform: scale(1.49) translate(-1px, -1px) rotate(-1deg); }
+    90%  { transform: scale(1.5) translate(1px, 0) rotate(1deg); }
+    100% { transform: scale(1.5) translate(0, 0) rotate(0deg); }
+}
+/* 4: Ladybird — gentle flutter (wing-open pulse) */
+@keyframes fi-flutter {
+    0%   { transform: scale(1) rotate(0deg); }
+    15%  { transform: scale(1.4) rotate(6deg); }
+    30%  { transform: scale(1.2) rotate(-4deg); }
+    45%  { transform: scale(1.55) rotate(3deg); }
+    60%  { transform: scale(1.35) rotate(-2deg); }
+    75%  { transform: scale(1.5) rotate(1deg); }
+    90%  { transform: scale(1.45) rotate(-0.5deg); }
+    100% { transform: scale(1.5) rotate(0deg); }
+}
+/* 5: Mosquito — erratic zigzag darting */
+@keyframes fi-zigzag {
+    0%   { transform: scale(1) translate(0, 0); }
+    14%  { transform: scale(1.3) translate(8px, -6px); }
+    28%  { transform: scale(1.35) translate(-6px, -10px); }
+    42%  { transform: scale(1.4) translate(5px, -3px); }
+    56%  { transform: scale(1.45) translate(-7px, -8px); }
+    70%  { transform: scale(1.48) translate(4px, -5px); }
+    85%  { transform: scale(1.5) translate(-2px, -2px); }
+    100% { transform: scale(1.5) translate(0, 0); }
+}
+/* 6: Frog — leap high + squash-stretch land */
+@keyframes fi-leap {
+    0%   { transform: scale(1, 1) translateY(0); }
+    12%  { transform: scale(1.1, 0.85) translateY(4px); }
+    30%  { transform: scale(0.9, 1.7) translateY(-22px); }
+    50%  { transform: scale(1.5, 1.5) translateY(-14px); }
+    65%  { transform: scale(1.55, 1.4) translateY(-6px); }
+    78%  { transform: scale(1.48, 1.52) translateY(-9px); }
+    100% { transform: scale(1.5, 1.5) translateY(-8px); }
+}
+/* 7: Baboon — pendulum swing arc */
+@keyframes fi-swing {
+    0%   { transform: scale(1) rotate(0deg); transform-origin: 50% 0; }
+    20%  { transform: scale(1.4) rotate(18deg); }
+    40%  { transform: scale(1.45) rotate(-14deg); }
+    55%  { transform: scale(1.48) rotate(8deg); }
+    70%  { transform: scale(1.5) rotate(-5deg); }
+    82%  { transform: scale(1.5) rotate(3deg); }
+    92%  { transform: scale(1.5) rotate(-1deg); }
+    100% { transform: scale(1.5) rotate(0deg); }
+}
+/* 8: Warthog — charge lunge forward + back */
+@keyframes fi-charge {
+    0%   { transform: scale(1) translateX(0) rotate(0deg); }
+    18%  { transform: scale(1.3) translateX(-4px) rotate(-3deg); }
+    35%  { transform: scale(1.55) translateX(14px) rotate(4deg); }
+    50%  { transform: scale(1.45) translateX(6px) rotate(-1deg); }
+    65%  { transform: scale(1.5) translateX(2px) rotate(1deg); }
+    80%  { transform: scale(1.5) translateX(-1px) rotate(-0.5deg); }
+    100% { transform: scale(1.5) translateX(0) rotate(0deg); }
+}
+/* 9: Hippo — heavy side-to-side rock */
+@keyframes fi-rock {
+    0%   { transform: scale(1) rotate(0deg) translateY(0); }
+    18%  { transform: scale(1.35) rotate(-8deg) translateY(-2px); }
+    36%  { transform: scale(1.45) rotate(6deg) translateY(-4px); }
+    52%  { transform: scale(1.48) rotate(-4deg) translateY(-3px); }
+    68%  { transform: scale(1.5) rotate(2.5deg) translateY(-2px); }
+    82%  { transform: scale(1.5) rotate(-1deg) translateY(-1px); }
+    100% { transform: scale(1.5) rotate(0deg) translateY(0); }
+}
+/* 10: Cheetah — speed dash (horizontal streak) */
+@keyframes fi-dash {
+    0%   { transform: scale(1) translateX(0) skewX(0deg); }
+    15%  { transform: scale(1.2, 0.9) translateX(-8px) skewX(-8deg); }
+    30%  { transform: scale(1.5, 1.1) translateX(16px) skewX(5deg); }
+    45%  { transform: scale(1.4, 1.2) translateX(4px) skewX(-2deg); }
+    60%  { transform: scale(1.5) translateX(-2px) skewX(1deg); }
+    80%  { transform: scale(1.5) translateX(1px) skewX(0deg); }
+    100% { transform: scale(1.5) translateX(0) skewX(0deg); }
+}
+/* 11: Crocodile — jaw snap (quick chomp) */
+@keyframes fi-snap {
+    0%   { transform: scale(1) scaleY(1) translateY(0); }
+    12%  { transform: scale(1.3) scaleY(0.75) translateY(3px); }
+    24%  { transform: scale(1.5) scaleY(1.3) translateY(-10px); }
+    36%  { transform: scale(1.45) scaleY(0.85) translateY(-2px); }
+    50%  { transform: scale(1.52) scaleY(1.2) translateY(-8px); }
+    65%  { transform: scale(1.48) scaleY(0.95) translateY(-4px); }
+    80%  { transform: scale(1.5) scaleY(1.05) translateY(-6px); }
+    100% { transform: scale(1.5) scaleY(1) translateY(-5px); }
+}
 
-/* Icon exits */
+/* ---- Icon exit keyframes ---- */
+
 @keyframes fi-magnify-out {
     0%   { transform: scale(1.5) rotate(0deg); }
     35%  { transform: scale(1.15) rotate(4deg); }
@@ -2091,6 +2404,63 @@ img {
 @keyframes fi-bounce-out {
     0%   { transform: scale(1.5) translateY(-8px); }
     30%  { transform: scale(1.1) translateY(-2px); }
-    60%  { transform: scale(1.04) translateY(0px); }
+    60%  { transform: scale(1.04) translateY(0); }
     100% { transform: scale(1) translateY(0); }
+}
+@keyframes fi-buzz-out {
+    0%   { transform: scale(1.5) translate(0, 0) rotate(0deg); }
+    30%  { transform: scale(1.2) translate(1px, -1px) rotate(2deg); }
+    60%  { transform: scale(1.05) translate(-1px, 0) rotate(-1deg); }
+    100% { transform: scale(1) translate(0, 0) rotate(0deg); }
+}
+@keyframes fi-flutter-out {
+    0%   { transform: scale(1.5) rotate(0deg); }
+    30%  { transform: scale(1.2) rotate(-3deg); }
+    60%  { transform: scale(1.06) rotate(1deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+@keyframes fi-zigzag-out {
+    0%   { transform: scale(1.5) translate(0, 0); }
+    30%  { transform: scale(1.2) translate(-3px, 2px); }
+    60%  { transform: scale(1.06) translate(1px, -1px); }
+    100% { transform: scale(1) translate(0, 0); }
+}
+@keyframes fi-leap-out {
+    0%   { transform: scale(1.5) translateY(-8px); }
+    25%  { transform: scale(1.2, 1.1) translateY(-3px); }
+    50%  { transform: scale(1.05, 1.08) translateY(1px); }
+    75%  { transform: scale(1.02, 0.98) translateY(0); }
+    100% { transform: scale(1) translateY(0); }
+}
+@keyframes fi-swing-out {
+    0%   { transform: scale(1.5) rotate(0deg); }
+    25%  { transform: scale(1.2) rotate(6deg); }
+    50%  { transform: scale(1.08) rotate(-3deg); }
+    75%  { transform: scale(1.02) rotate(1deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+@keyframes fi-charge-out {
+    0%   { transform: scale(1.5) translateX(0) rotate(0deg); }
+    30%  { transform: scale(1.2) translateX(-4px) rotate(-2deg); }
+    60%  { transform: scale(1.06) translateX(1px) rotate(0.5deg); }
+    100% { transform: scale(1) translateX(0) rotate(0deg); }
+}
+@keyframes fi-rock-out {
+    0%   { transform: scale(1.5) rotate(0deg) translateY(0); }
+    25%  { transform: scale(1.2) rotate(4deg) translateY(0); }
+    50%  { transform: scale(1.08) rotate(-2deg) translateY(0); }
+    75%  { transform: scale(1.02) rotate(0.5deg) translateY(0); }
+    100% { transform: scale(1) rotate(0deg) translateY(0); }
+}
+@keyframes fi-dash-out {
+    0%   { transform: scale(1.5) translateX(0) skewX(0deg); }
+    30%  { transform: scale(1.2) translateX(5px) skewX(3deg); }
+    60%  { transform: scale(1.06) translateX(-1px) skewX(0deg); }
+    100% { transform: scale(1) translateX(0) skewX(0deg); }
+}
+@keyframes fi-snap-out {
+    0%   { transform: scale(1.5) scaleY(1) translateY(-5px); }
+    30%  { transform: scale(1.2) scaleY(1.1) translateY(-2px); }
+    60%  { transform: scale(1.06) scaleY(0.97) translateY(0); }
+    100% { transform: scale(1) scaleY(1) translateY(0); }
 }

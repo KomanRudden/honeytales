@@ -5,7 +5,7 @@
 .order-page {
     background: var(--cream);
     min-height: 100vh;
-    padding: 120px 20px 80px;
+    padding: 180px 20px 80px;
 }
 
 .order-header {
@@ -63,7 +63,7 @@
     font-size: 0.85rem;
     color: var(--text-muted);
     background: #FFF8E7;
-    border-left: 3px solid var(--honey);
+    border-left: 3px solid var(--action);
     padding: 10px 14px;
     border-radius: 0 8px 8px 0;
     line-height: 1.6;
@@ -144,18 +144,18 @@
 }
 
 .order-book-tile.has-qty {
-    border-color: var(--honey);
+    border-color: var(--action);
     transform: translateY(-4px);
     box-shadow: var(--shadow-hover);
 }
 
 .order-book-tile.has-qty .order-book-label {
-    background: var(--honey);
+    background: var(--action);
     color: var(--white);
 }
 
 .order-book-tile.has-qty .book-qty-row {
-    background: var(--honey);
+    background: var(--action);
 }
 
 .order-total-box {
@@ -163,7 +163,7 @@
     align-items: center;
     justify-content: space-between;
     background: var(--cream);
-    border: 2px solid var(--honey);
+    border: 2px solid var(--action);
     border-radius: var(--radius-sm);
     padding: 12px 18px;
     margin-bottom: 12px;
@@ -178,7 +178,7 @@
 .order-total-amount {
     font-family: 'Bubblegum Sans', cursive;
     font-size: 1.5rem;
-    color: var(--honey);
+    color: var(--action);
 }
 
 .order-fx-convert {
@@ -214,5 +214,11 @@
 
     .order-form-col {
         padding: 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .order-page {
+        padding-top: 170px;
     }
 }

@@ -5,8 +5,8 @@
 /* --- Book Hero --- */
 .book-hero {
     position: relative;
-    background: linear-gradient(135deg, #6BBF4E 0%, #8DC63F 30%, #B8D94A 50%, #87CEEB 100%);
-    padding: 100px 20px 60px;
+    background: linear-gradient(160deg, #3A6B50 0%, #2B503F 60%, #223F32 100%);
+    padding: 150px 20px 60px;
     overflow: hidden;
 }
 
@@ -40,7 +40,7 @@
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(6px);
     border: 1px solid rgba(255, 255, 255, 0.5);
-    color: var(--brown);
+    color: var(--white);
     font-family: 'Bubblegum Sans', cursive;
     font-size: 0.95rem;
     padding: 5px 18px;
@@ -73,7 +73,7 @@
 
 .book-description {
     font-size: 1.05rem;
-    color: var(--text-dark);
+    color: rgba(255, 255, 255, 0.85);
     line-height: 1.8;
     margin-bottom: 28px;
     max-width: 520px;
@@ -90,7 +90,7 @@
     background: rgba(255, 255, 255, 0.22);
     backdrop-filter: blur(6px);
     border: 1px solid rgba(255, 255, 255, 0.5);
-    color: var(--brown);
+    color: var(--white);
     font-family: 'Bubblegum Sans', cursive;
     font-size: 0.9rem;
     padding: 5px 16px;
@@ -260,7 +260,6 @@
 
 /* --- Fun Facts --- */
 .book-facts-section {
-    background: linear-gradient(135deg, #FFF3D4, #FFE8C2);
     padding: 80px 0;
     position: relative;
 }
@@ -281,19 +280,13 @@
     position: relative;
 }
 
-.fact-card:nth-child(1) {
-    background: linear-gradient(160deg, #FFFCF0, #FFF3CC);
-    border-top-color: #F5A623;
+.book-facts-section {
+    background: var(--cream);
 }
 
-.fact-card:nth-child(2) {
-    background: linear-gradient(160deg, #FFF6F3, #FFE6DC);
-    border-top-color: #E8775A;
-}
-
-.fact-card:nth-child(3) {
-    background: linear-gradient(160deg, #F3F9EE, #E3F0D5);
-    border-top-color: #7AB660;
+.fact-card {
+    background: #fff;
+    border-top-color: var(--honey);
 }
 
 .fact-card {
@@ -323,54 +316,97 @@
 
 /* ---- Fact card active/leaving states (keyframes live in styles.css) ---- */
 
-/* Active states — wired up per animation index in JS via data attr */
+/* Card active states */
 .fact-card[data-anim="0"].fact-card--active {
     animation: fc-bulge 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16);
-    z-index: 2;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16); z-index: 2;
 }
 .fact-card[data-anim="1"].fact-card--active {
     animation: fc-tilt 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16);
-    z-index: 2;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16); z-index: 2;
 }
 .fact-card[data-anim="2"].fact-card--active {
     animation: fc-pop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16);
-    z-index: 2;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16); z-index: 2;
+}
+.fact-card[data-anim="3"].fact-card--active {
+    animation: fc-lift 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16); z-index: 2;
+}
+.fact-card[data-anim="4"].fact-card--active {
+    animation: fc-swell 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16); z-index: 2;
+}
+.fact-card[data-anim="5"].fact-card--active {
+    animation: fc-lean 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16); z-index: 2;
+}
+.fact-card[data-anim="6"].fact-card--active {
+    animation: fc-spring 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16); z-index: 2;
+}
+.fact-card[data-anim="7"].fact-card--active {
+    animation: fc-rock 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16); z-index: 2;
+}
+.fact-card[data-anim="8"].fact-card--active {
+    animation: fc-jolt 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16); z-index: 2;
+}
+.fact-card[data-anim="9"].fact-card--active {
+    animation: fc-settle 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16); z-index: 2;
+}
+.fact-card[data-anim="10"].fact-card--active {
+    animation: fc-slide 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16); z-index: 2;
+}
+.fact-card[data-anim="11"].fact-card--active {
+    animation: fc-lurch 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16); z-index: 2;
 }
 
-.fact-card[data-anim="0"].fact-card--leaving {
-    animation: fc-bulge-out 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-.fact-card[data-anim="1"].fact-card--leaving {
-    animation: fc-tilt-out 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-.fact-card[data-anim="2"].fact-card--leaving {
-    animation: fc-pop-out 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
+/* Card leaving states */
+.fact-card[data-anim="0"].fact-card--leaving  { animation: fc-bulge-out  0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+.fact-card[data-anim="1"].fact-card--leaving  { animation: fc-tilt-out   0.5s  cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+.fact-card[data-anim="2"].fact-card--leaving  { animation: fc-pop-out    0.6s  cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+.fact-card[data-anim="3"].fact-card--leaving  { animation: fc-lift-out   0.5s  cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+.fact-card[data-anim="4"].fact-card--leaving  { animation: fc-swell-out  0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+.fact-card[data-anim="5"].fact-card--leaving  { animation: fc-lean-out   0.5s  cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+.fact-card[data-anim="6"].fact-card--leaving  { animation: fc-spring-out 0.6s  cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+.fact-card[data-anim="7"].fact-card--leaving  { animation: fc-rock-out   0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+.fact-card[data-anim="8"].fact-card--leaving  { animation: fc-jolt-out   0.5s  cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+.fact-card[data-anim="9"].fact-card--leaving  { animation: fc-settle-out 0.6s  cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+.fact-card[data-anim="10"].fact-card--leaving { animation: fc-slide-out  0.5s  cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+.fact-card[data-anim="11"].fact-card--leaving { animation: fc-lurch-out  0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
 
 /* Icon active states */
-.fact-card[data-anim="0"].fact-card--active .fact-card-icon img {
-    animation: fi-magnify 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) 0.06s forwards;
-}
-.fact-card[data-anim="1"].fact-card--active .fact-card-icon img {
-    animation: fi-spin 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) 0.05s forwards;
-}
-.fact-card[data-anim="2"].fact-card--active .fact-card-icon img {
-    animation: fi-bounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.04s forwards;
-}
+.fact-card[data-anim="0"].fact-card--active .fact-card-icon img  { animation: fi-magnify 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) 0.06s forwards; }
+.fact-card[data-anim="1"].fact-card--active .fact-card-icon img  { animation: fi-spin    0.55s cubic-bezier(0.34, 1.56, 0.64, 1) 0.05s forwards; }
+.fact-card[data-anim="2"].fact-card--active .fact-card-icon img  { animation: fi-bounce  0.6s  cubic-bezier(0.34, 1.56, 0.64, 1) 0.04s forwards; }
+.fact-card[data-anim="3"].fact-card--active .fact-card-icon img  { animation: fi-buzz    0.7s  cubic-bezier(0.34, 1.56, 0.64, 1) 0.04s forwards; }
+.fact-card[data-anim="4"].fact-card--active .fact-card-icon img  { animation: fi-flutter 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) 0.05s forwards; }
+.fact-card[data-anim="5"].fact-card--active .fact-card-icon img  { animation: fi-zigzag  0.7s  cubic-bezier(0.34, 1.56, 0.64, 1) 0.04s forwards; }
+.fact-card[data-anim="6"].fact-card--active .fact-card-icon img  { animation: fi-leap    0.65s cubic-bezier(0.34, 1.56, 0.64, 1) 0.03s forwards; }
+.fact-card[data-anim="7"].fact-card--active .fact-card-icon img  { animation: fi-swing   0.7s  cubic-bezier(0.34, 1.56, 0.64, 1) 0.04s forwards; }
+.fact-card[data-anim="8"].fact-card--active .fact-card-icon img  { animation: fi-charge  0.6s  cubic-bezier(0.34, 1.56, 0.64, 1) 0.05s forwards; }
+.fact-card[data-anim="9"].fact-card--active .fact-card-icon img  { animation: fi-rock    0.7s  cubic-bezier(0.34, 1.56, 0.64, 1) 0.04s forwards; }
+.fact-card[data-anim="10"].fact-card--active .fact-card-icon img { animation: fi-dash    0.55s cubic-bezier(0.34, 1.56, 0.64, 1) 0.03s forwards; }
+.fact-card[data-anim="11"].fact-card--active .fact-card-icon img { animation: fi-snap    0.6s  cubic-bezier(0.34, 1.56, 0.64, 1) 0.04s forwards; }
 
 /* Icon exit states */
-.fact-card[data-anim="0"].fact-card--leaving .fact-card-icon img {
-    animation: fi-magnify-out 0.45s ease-out forwards;
-}
-.fact-card[data-anim="1"].fact-card--leaving .fact-card-icon img {
-    animation: fi-spin-out 0.45s ease-out forwards;
-}
-.fact-card[data-anim="2"].fact-card--leaving .fact-card-icon img {
-    animation: fi-bounce-out 0.45s ease-out forwards;
-}
+.fact-card[data-anim="0"].fact-card--leaving .fact-card-icon img  { animation: fi-magnify-out 0.45s ease-out forwards; }
+.fact-card[data-anim="1"].fact-card--leaving .fact-card-icon img  { animation: fi-spin-out    0.45s ease-out forwards; }
+.fact-card[data-anim="2"].fact-card--leaving .fact-card-icon img  { animation: fi-bounce-out  0.45s ease-out forwards; }
+.fact-card[data-anim="3"].fact-card--leaving .fact-card-icon img  { animation: fi-buzz-out    0.45s ease-out forwards; }
+.fact-card[data-anim="4"].fact-card--leaving .fact-card-icon img  { animation: fi-flutter-out 0.45s ease-out forwards; }
+.fact-card[data-anim="5"].fact-card--leaving .fact-card-icon img  { animation: fi-zigzag-out  0.45s ease-out forwards; }
+.fact-card[data-anim="6"].fact-card--leaving .fact-card-icon img  { animation: fi-leap-out    0.45s ease-out forwards; }
+.fact-card[data-anim="7"].fact-card--leaving .fact-card-icon img  { animation: fi-swing-out   0.45s ease-out forwards; }
+.fact-card[data-anim="8"].fact-card--leaving .fact-card-icon img  { animation: fi-charge-out  0.45s ease-out forwards; }
+.fact-card[data-anim="9"].fact-card--leaving .fact-card-icon img  { animation: fi-rock-out    0.45s ease-out forwards; }
+.fact-card[data-anim="10"].fact-card--leaving .fact-card-icon img { animation: fi-dash-out    0.45s ease-out forwards; }
+.fact-card[data-anim="11"].fact-card--leaving .fact-card-icon img { animation: fi-snap-out    0.45s ease-out forwards; }
 
 .fact-card h3 {
     font-size: 1.4rem;
@@ -479,7 +515,7 @@
 }
 
 .back-link:hover {
-    color: var(--honey-dark);
+    color: var(--action);
 }
 
 /* --- Responsive --- */

@@ -147,6 +147,19 @@ document.addEventListener('DOMContentLoaded', () => {
             email.classList.remove('error');
         }
 
+        // Phone
+        const phone = document.getElementById('phone');
+        const phoneError = document.getElementById('phoneError');
+        const phoneVal = phone.value.replace(/[\s\-()]/g, '');
+        if (phoneVal.length < 7) {
+            phoneError.textContent = 'Please enter your cell number';
+            phone.classList.add('error');
+            isValid = false;
+        } else {
+            phoneError.textContent = '';
+            phone.classList.remove('error');
+        }
+
         // Address
         const address = document.getElementById('address');
         const addressError = document.getElementById('addressError');
@@ -199,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 orderSuccess.classList.add('show');
                 orderForm.reset();
                 setTimeout(() => {
-                    window.location.href = 'index.html';
+                    window.location.href = '/';
                 }, 2000);
             } else {
                 alert('Something went wrong. Please email us directly at admin@honeytales.co.za');

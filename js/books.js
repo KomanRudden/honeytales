@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Fact Card Hover Animations ---
     // Assign animation index and set up delayed hover with enter/leave animations
     document.querySelectorAll('.fact-card').forEach((card, i) => {
-        card.dataset.anim = i % 3;
+        if (!card.dataset.anim) card.dataset.anim = i % 3;
 
         let enterTimer = null;
         let isActive = false;

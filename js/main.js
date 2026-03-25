@@ -317,6 +317,19 @@ document.addEventListener('DOMContentLoaded', () => {
             email.classList.remove('error');
         }
 
+        // Phone validation
+        const phone = document.getElementById('phone');
+        const phoneError = document.getElementById('phoneError');
+        const phoneVal = phone.value.replace(/[\s\-()]/g, '');
+        if (phoneVal.length < 7) {
+            phoneError.textContent = 'Please enter your cell number';
+            phone.classList.add('error');
+            isValid = false;
+        } else {
+            phoneError.textContent = '';
+            phone.classList.remove('error');
+        }
+
         // Books & address validation (if ordering)
         const booksError = document.getElementById('booksError');
         const booksOrdered = document.getElementById('booksOrdered');
@@ -356,6 +369,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else {
             booksOrdered.value = '';
+        }
+
+        // Message validation
+        const message = document.getElementById('message');
+        const messageError = document.getElementById('messageError');
+        if (message.value.trim().length < 2) {
+            messageError.textContent = 'Please enter a message';
+            message.classList.add('error');
+            isValid = false;
+        } else {
+            messageError.textContent = '';
+            message.classList.remove('error');
         }
 
         if (isValid) {
@@ -507,6 +532,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Female spotted hyenas are larger and more dominant than males.',
                 'Hyenas are actually more closely related to cats than to dogs!',
                 'Hyena cubs are born with their eyes open and can see from birth.'
+            ]
+        },
+        meerkat: {
+            title: 'Meerkat',
+            facts: [
+                'Meerkats live in groups called "mobs" or "gangs" of up to 30 members!',
+                'Meerkat sentries stand on their hind legs to watch for predators and bark to warn the group.',
+                'Meerkats are immune to certain venoms, so they can eat scorpions and some snakes without harm!',
+                'Baby meerkats are taught to hunt by adults who bring them live prey to practise with.',
+                'Meerkats have dark patches around their eyes that act like built-in sunglasses, reducing glare.'
             ]
         }
     };
