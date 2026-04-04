@@ -106,25 +106,99 @@
     <!-- Poems Section -->
     <section class="animals-section" id="animals">
         <div class="container">
-            <h2 class="section-title fade-in">Click the Animals</h2>
-            <p class="section-subtitle fade-in">Click on an animal to discover fun facts about them</p>
+            <div class="animals-intro">
+                <h2 class="section-title fade-in">Click the Animals</h2>
+                <p class="section-subtitle fade-in">Click on an animal to discover fun facts about them</p>
+            </div>
 
             <div class="animal-gallery">
                 <div class="animal-item fade-in" data-animal="giraffe">
-                    <img src="assets/images/giraffe.png" alt="Giraffe - cartoon giraffe wearing a red scarf" loading="lazy">
+                    <div class="animal-image-wrap">
+                        <img src="assets/images/giraffe.png" alt="Giraffe - cartoon giraffe wearing a red scarf" loading="lazy">
+                    </div>
                     <h3 class="animal-name">Giraffe</h3>
                 </div>
 
-                <div class="animal-item fade-in" data-animal="zebras">
-                    <img src="assets/images/zebra.png" alt="Zebra - cartoon zebra with black and white stripes" loading="lazy">
+                <div class="animal-item fade-in" data-animal="zebra">
+                    <div class="animal-image-wrap">
+                        <img src="assets/images/zebra.png" alt="Zebra - cartoon zebra with black and white stripes" loading="lazy">
+                    </div>
                     <h3 class="animal-name">Zebra</h3>
                 </div>
 
-                <div class="animal-item animal-item--meerkat fade-in" data-animal="meerkat">
-                    <img src="assets/images/meerkat.png" alt="Meerkat - cartoon meerkat standing upright" loading="lazy">
+                <div class="animal-item fade-in" data-animal="meerkat">
+                    <div class="animal-image-wrap">
+                        <img src="assets/images/meerkat.png" alt="Meerkat - cartoon meerkat standing upright" loading="lazy">
+                    </div>
                     <h3 class="animal-name">Meerkat</h3>
                 </div>
             </div>
+
+            <h2 class="section-title fade-in">Did You Know?</h2>
+
+            <div class="facts-grid">
+                <div class="fact-card fact-card--giraffe" data-anim="0">
+                    <span class="fact-card-icon"><img src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/Giraffe/3D/giraffe_3d.png" alt="Giraffe"></span>
+                    <h3>Giraffe</h3>
+                    <p>Giraffes are the tallest animals on Earth — up to 5.5 metres tall! Their tongue is about 50 cm long and dark purple to protect it from sunburn.</p>
+                </div>
+                <div class="fact-card fact-card--elephant" data-anim="1">
+                    <span class="fact-card-icon"><img src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/Elephant/3D/elephant_3d.png" alt="Elephant"></span>
+                    <h3>Elephant</h3>
+                    <p>An elephant's trunk has over 40,000 muscles! Baby elephants suck their trunks for comfort, just like human babies suck their thumbs.</p>
+                </div>
+                <div class="fact-card fact-card--lion" data-anim="2">
+                    <span class="fact-card-icon"><img src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/Lion/3D/lion_3d.png" alt="Lion"></span>
+                    <h3>Lion</h3>
+                    <p>A lion's roar can be heard from 8 kilometres away! Lions sleep up to 20 hours a day to save energy — they're the champions of napping.</p>
+                </div>
+                <div class="fact-card fact-card--bee" data-anim="3">
+                    <span class="fact-card-icon"><img src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/Honeybee/3D/honeybee_3d.png" alt="Honey Bee"></span>
+                    <h3>Honey Bee</h3>
+                    <p>A single bee can visit up to 5,000 flowers in one day! Bees communicate by doing a special waggle dance to tell other bees where food is.</p>
+                </div>
+                <div class="fact-card fact-card--ladybird" data-anim="4">
+                    <span class="fact-card-icon"><img src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/Lady%20beetle/3D/lady_beetle_3d.png" alt="Ladybird"></span>
+                    <h3>Ladybird</h3>
+                    <p>Ladybirds can eat up to 5,000 aphids in their lifetime! When scared, they play dead and release a smelly yellow liquid from their knees.</p>
+                </div>
+                <div class="fact-card fact-card--mosquito" data-anim="5">
+                    <span class="fact-card-icon"><img src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/Mosquito/3D/mosquito_3d.png" alt="Mosquito"></span>
+                    <h3>Mosquito</h3>
+                    <p>Only female mosquitoes bite — they need blood to produce eggs! They find you by detecting the carbon dioxide you breathe out, and can smell you from up to 50 metres away.</p>
+                </div>
+                <div class="fact-card fact-card--frog" data-anim="6">
+                    <span class="fact-card-icon"><img src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/Frog/3D/frog_3d.png" alt="Frog"></span>
+                    <h3>Frog</h3>
+                    <p>Frogs don't drink water — they absorb it through their skin! South Africa has over 130 frog species, and some can survive being frozen solid in winter and thaw out in spring completely unharmed.</p>
+                </div>
+                <div class="fact-card fade-in fact-card--baboon" data-anim="7">
+                    <span class="fact-card-icon"><img src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/Monkey/3D/monkey_3d.png" alt="Baboon"></span>
+                    <h3>Baboon</h3>
+                    <p>Baboons are among the most social animals in Africa — troops can have up to 300 members! They groom each other to build friendships and have over 30 different vocalisations.</p>
+                </div>
+                <div class="fact-card fact-card--warthog" data-anim="8">
+                    <span class="fact-card-icon"><img src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/Boar/3D/boar_3d.png" alt="Warthog"></span>
+                    <h3>Warthog</h3>
+                    <p>Warthogs kneel on their front legs to graze — they even have special knee pads! Despite their fierce look, they're very fast runners and can reach 48 km/h when chased by predators.</p>
+                </div>
+                <div class="fact-card fact-card--hippo" data-anim="9">
+                    <span class="fact-card-icon"><img src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/Hippopotamus/3D/hippopotamus_3d.png" alt="Hippo"></span>
+                    <h3>Hippo</h3>
+                    <p>Hippos secrete a natural pink sunscreen from their skin! Despite their bulk, they can run up to 30 km/h on land and spend up to 16 hours a day in water to stay cool.</p>
+                </div>
+                <div class="fact-card fact-card--cheetah" data-anim="10">
+                    <span class="fact-card-icon"><img src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/Leopard/3D/leopard_3d.png" alt="Cheetah"></span>
+                    <h3>Cheetah</h3>
+                    <p>Cheetahs are the fastest land animals on Earth, reaching 112 km/h in short bursts! Unlike other big cats, they purr instead of roar, and they need only 3 days between hunts.</p>
+                </div>
+                <div class="fact-card fact-card--crocodile" data-anim="11">
+                    <span class="fact-card-icon"><img src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/Crocodile/3D/crocodile_3d.png" alt="Crocodile"></span>
+                    <h3>Crocodile</h3>
+                    <p>Crocodiles have been on Earth for over 200 million years — they survived the extinction that wiped out the dinosaurs! They can go months without eating after a big meal.</p>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -323,6 +397,8 @@
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" defer></script>
     <script src="js/main.js"></script>
 </body>
 </html>

@@ -219,6 +219,285 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fadeElements.forEach(el => fadeObserver.observe(el));
 
+    function initCardIconAnimations() {
+        if (typeof gsap === 'undefined' || !gsap) return;
+        const cards = document.querySelectorAll('.fact-card[data-anim]');
+        cards.forEach(card => {
+            const icon = card.querySelector('.fact-card-icon img');
+            if (!icon) return;
+            gsap.set(icon, { transformOrigin: 'center center' });
+
+            let idleTween = null;
+            let hoverTween = null;
+
+            const makeIdle = (type) => {
+                switch (type) {
+                    case '0':
+                        return gsap.to(icon, { duration: 2.4, y: '+=8', rotation: 4, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+                    case '1':
+                        return gsap.to(icon, { duration: 2, x: '+=6', rotation: -3, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+                    case '2':
+                        return gsap.to(icon, { duration: 1.8, y: '+=10', scale: 1.03, yoyo: true, repeat: -1, ease: 'power1.inOut' });
+                    case '3':
+                        return gsap.to(icon, { duration: 1.5, x: '+=8', rotation: 8, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+                    case '4':
+                        return gsap.to(icon, { duration: 1.6, x: '-=6', y: '+=4', rotation: -6, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+                    case '5':
+                        return gsap.to(icon, { duration: 1.4, rotation: 3, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+                    case '6':
+                        return gsap.to(icon, { duration: 1.8, y: '+=12', scale: 1.05, yoyo: true, repeat: -1, ease: 'power1.inOut' });
+                    case '7':
+                        return gsap.to(icon, { duration: 2.2, rotation: 6, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+                    case '8':
+                        return gsap.to(icon, { duration: 1.9, x: '+=10', scale: 1.05, yoyo: true, repeat: -1, ease: 'power2.inOut' });
+                    case '9':
+                        return gsap.to(icon, { duration: 2.1, y: '+=6', scale: 1.04, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+                    case '10':
+                        return gsap.to(icon, { duration: 1.7, x: '-=10', rotation: -8, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+                    case '11':
+                        return gsap.to(icon, { duration: 2.0, x: '+=5', rotation: 5, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+                    default:
+                        return gsap.to(icon, { duration: 2.2, y: '+=6', yoyo: true, repeat: -1, ease: 'sine.inOut' });
+                }
+            };
+
+            const resetIcon = () => {
+                if (hoverTween) hoverTween.kill();
+                hoverTween = gsap.to(icon, {
+                    duration: 0.35,
+                    x: 0,
+                    y: 0,
+                    rotation: 0,
+                    rotationY: 0,
+                    scale: 1,
+                    opacity: 1,
+                    ease: 'elastic.out(1, 0.5)'
+                });
+                if (idleTween) idleTween.restart(true);
+            };
+
+            const playHover = () => {
+                if (idleTween) idleTween.pause();
+                if (hoverTween) hoverTween.kill();
+                const type = card.dataset.anim;
+                switch (type) {
+                    case '0':
+                        hoverTween = gsap.timeline()
+                            .to(icon, { duration: 0.35, y: -20, scale: 1.2, rotation: -12, ease: 'power1.out' })
+                            .to(icon, { duration: 0.9, rotationY: 360, x: 18, y: -35, ease: 'power2.inOut' })
+                            .to(icon, { duration: 0.55, x: 0, y: 0, rotation: 0, rotationY: 0, scale: 1, ease: 'elastic.out(1, 0.6)' });
+                        break;
+                    case '1':
+                        hoverTween = gsap.timeline()
+                            .to(icon, { duration: 0.3, scale: 1.18, rotation: -6, ease: 'power1.out' })
+                            .to(icon, { duration: 0.9, x: 20, y: -18, rotation: 10, ease: 'power3.out' })
+                            .to(icon, { duration: 0.75, x: 0, y: 0, rotation: 0, scale: 1, ease: 'elastic.out(1, 0.5)' });
+                        break;
+                    case '2':
+                        hoverTween = gsap.timeline()
+                            .to(icon, { duration: 0.2, y: -30, scale: 1.25, ease: 'power2.out' })
+                            .to(icon, { duration: 0.15, y: 0, scale: 0.95, ease: 'power2.in' })
+                            .to(icon, { duration: 0.25, scale: 1, ease: 'elastic.out(1, 0.5)' });
+                        break;
+                    case '3':
+                        hoverTween = gsap.timeline()
+                            .to(icon, { duration: 0.2, x: 18, y: -12, rotation: 10, ease: 'power2.out' })
+                            .to(icon, { duration: 0.18, x: -24, rotation: -12, ease: 'power2.inOut' })
+                            .to(icon, { duration: 0.35, x: 0, y: 0, rotation: 0, ease: 'elastic.out(1, 0.5)' });
+                        break;
+                    case '4':
+                        hoverTween = gsap.timeline()
+                            .to(icon, { duration: 0.25, y: -18, scale: 1.18, ease: 'power1.out' })
+                            .to(icon, { duration: 0.25, x: -16, rotation: -18, ease: 'power2.out' })
+                            .to(icon, { duration: 0.35, x: 0, y: 0, scale: 1, rotation: 0, ease: 'elastic.out(1, 0.6)' });
+                        break;
+                    case '5':
+                        hoverTween = gsap.timeline()
+                            .to(icon, { duration: 0.18, scale: 1.3, ease: 'power1.out' })
+                            .to(icon, { duration: 0.15, scale: 0.4, opacity: 0.2, ease: 'power2.in' })
+                            .to(icon, { duration: 0.4, scale: 1, opacity: 1, ease: 'elastic.out(1, 0.5)' });
+                        break;
+                    case '6':
+                        hoverTween = gsap.timeline()
+                            .to(icon, { duration: 0.18, y: -25, scale: 1.25, ease: 'power2.out' })
+                            .to(icon, { duration: 0.15, y: 5, scale: 0.95, ease: 'power2.in' })
+                            .to(icon, { duration: 0.35, y: 0, scale: 1, ease: 'elastic.out(1, 0.5)' });
+                        break;
+                    case '7':
+                        hoverTween = gsap.timeline()
+                            .to(icon, { duration: 0.25, rotation: 15, x: 10, ease: 'power1.out' })
+                            .to(icon, { duration: 0.25, rotation: -20, x: -10, ease: 'power1.inOut' })
+                            .to(icon, { duration: 0.4, rotation: 0, x: 0, ease: 'elastic.out(1, 0.5)' });
+                        break;
+                    case '8':
+                        hoverTween = gsap.timeline()
+                            .to(icon, { duration: 0.2, x: 28, scale: 1.18, ease: 'power1.out' })
+                            .to(icon, { duration: 0.25, x: -16, ease: 'power1.inOut' })
+                            .to(icon, { duration: 0.35, x: 0, scale: 1, ease: 'elastic.out(1, 0.5)' });
+                        break;
+                    case '9':
+                        hoverTween = gsap.timeline()
+                            .to(icon, { duration: 0.2, scale: 1.15, y: -14, ease: 'power1.out' })
+                            .to(icon, { duration: 0.25, rotate: 10, ease: 'power1.inOut' })
+                            .to(icon, { duration: 0.35, scale: 1, y: 0, rotate: 0, ease: 'elastic.out(1, 0.5)' });
+                        break;
+                    case '10':
+                        hoverTween = gsap.timeline()
+                            .to(icon, { duration: 0.18, x: 24, scale: 1.2, ease: 'power2.out' })
+                            .to(icon, { duration: 0.25, x: -12, ease: 'power1.inOut' })
+                            .to(icon, { duration: 0.35, x: 0, scale: 1, ease: 'elastic.out(1, 0.6)' });
+                        break;
+                    case '11':
+                        hoverTween = gsap.timeline()
+                            .to(icon, { duration: 0.15, scale: 1.4, ease: 'power1.out' })
+                            .to(icon, { duration: 0.15, scale: 0.8, ease: 'power1.in' })
+                            .to(icon, { duration: 0.4, scale: 1, ease: 'elastic.out(1, 0.5)' });
+                        break;
+                    default:
+                        hoverTween = gsap.to(icon, { duration: 0.6, scale: 1.12, ease: 'power1.out' });
+                        break;
+                }
+
+            };
+
+            idleTween = makeIdle(card.dataset.anim);
+            card.addEventListener('mouseenter', playHover);
+            card.addEventListener('mouseleave', resetIcon);
+        });
+    }
+
+    initCardIconAnimations();
+
+    // --- Card Stacking Scroll Animation ---
+    function initCardStacking() {
+        if (typeof gsap === 'undefined' || !gsap) return;
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        const cards = Array.from(document.querySelectorAll('.fact-card'));
+        const section = document.querySelector('.animals-section');
+        const grid = document.querySelector('.facts-grid');
+
+        if (!cards.length || !section || !grid) return;
+
+        // Get initial positions before changing layout
+        const initialPositions = cards.map(card => ({
+            left: card.offsetLeft,
+            top: card.offsetTop,
+            width: card.offsetWidth,
+            height: card.offsetHeight
+        }));
+
+        const gridRect = grid.getBoundingClientRect();
+        const centerX = grid.offsetWidth / 2;
+        const initialYOffsets = cards.map((_, i) => 200 + i * 20); // Start below viewport
+
+        // Disable grid layout to allow absolute positioning
+        gsap.set(grid, { display: 'block' });
+
+        // Set cards to absolute positioning, starting below
+        cards.forEach((card, i) => {
+            const targetX = centerX - (initialPositions[i].width / 2);
+            if (i === 0) {
+                // First card starts at center, visible
+                gsap.set(card, {
+                    position: 'absolute',
+                    left: 0,
+                    top: 0,
+                    width: initialPositions[i].width + 'px',
+                    x: targetX,
+                    y: 0,
+                    zIndex: 1,
+                    opacity: 1
+                });
+            } else {
+                gsap.set(card, {
+                    position: 'absolute',
+                    left: 0,
+                    top: 0,
+                    width: initialPositions[i].width + 'px',
+                    x: 0,
+                    y: initialYOffsets[i],
+                    zIndex: 1,
+                    opacity: 0
+                });
+            }
+        });
+
+        // Calculate total scroll height
+        const cardHeight = 400;
+        const stackOffset = 0; // They stack at same position
+        const totalHeight = 800; // Scroll height
+
+        gsap.set(grid, { height: totalHeight + 'px' });
+
+        // ScrollTrigger for stacking
+        ScrollTrigger.create({
+            trigger: section,
+            start: "top top",
+            end: "+=" + totalHeight,
+            pin: true,
+            scrub: 1,
+            // markers: true, // Debug markers
+            snap: {
+                snapTo: (value) => {
+                    const points = [];
+                    for (let i = 0; i <= cards.length; i++) {
+                        points.push(i / cards.length);
+                    }
+                    return gsap.utils.snap(points, value);
+                },
+                duration: { min: 0.2, max: 0.8 },
+                ease: "power2.inOut"
+            },
+            onUpdate: (self) => {
+                const progress = self.progress;
+
+                cards.forEach((card, i) => {
+                    const targetX = centerX - (initialPositions[i].width / 2);
+                    const targetY = 0;
+
+                    if (i === 0) {
+                        // First card stays at center
+                        gsap.set(card, {
+                            x: targetX,
+                            y: 0,
+                            zIndex: 1,
+                            opacity: 1,
+                            scale: 1
+                        });
+                        return;
+                    }
+
+                    const cardStart = (i - 1) / cards.length;
+                    const cardEnd = i / cards.length;
+                    const cardProgress = gsap.utils.clamp(0, 1, (progress - cardStart) / (cardEnd - cardStart));
+
+                    gsap.set(card, {
+                        x: cardProgress * targetX,
+                        y: initialYOffsets[i] * (1 - cardProgress),
+                        zIndex: i + 1,
+                        opacity: cardProgress,
+                        scale: 1 - (cardProgress * 0.05)
+                    });
+
+                    if (cardProgress > 0.9) {
+                        gsap.to(card, {
+                            duration: 0.3,
+                            x: targetX,
+                            y: targetY,
+                            opacity: 1,
+                            scale: 1,
+                            ease: "elastic.out(1, 0.5)"
+                        });
+                    }
+                });
+            }
+        });
+    }
+
+    // initCardStacking();
+
     // --- WhatsApp Widget ---
     const whatsappFab = document.getElementById('whatsappFab');
     const whatsappPopup = document.getElementById('whatsappPopup');
