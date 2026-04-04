@@ -36,7 +36,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
+    scroll-padding-top: 120px;
 }
 
 body {
@@ -152,9 +152,9 @@ body:has(.free-delivery-banner) .navbar {
     top: var(--banner-h, 43px);
 }
 
-/* Also update scroll-padding so anchor links clear the full header */
+/* Scroll padding accounts for fixed banner + navbar */
 body:has(.free-delivery-banner) {
-    scroll-padding-top: var(--header-h, 150px);
+    scroll-padding-top: 120px;
 }
 
 /* --- Navigation --- */
@@ -1106,7 +1106,7 @@ body:has(.free-delivery-banner) {
 .contact-section {
     background: var(--cream);
     padding: 40px 0 80px;
-    scroll-margin-top: 0px;
+    scroll-margin-top: 120px;
 }
 
 .contact-grid {
