@@ -197,6 +197,52 @@
     font-weight: 600;
 }
 
+/* Both editions showing: one row of 4 per language, smaller tiles */
+.order-book-grid.edition-grid--both {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.edition-grid--both .order-book-tile {
+    border-radius: 10px;
+}
+
+.edition-grid--both .order-book-tile.has-qty {
+    transform: translateY(-2px);
+}
+
+.edition-grid--both .order-book-label {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.68rem;
+    padding: 6px 4px;
+    line-height: 1.2;
+}
+
+.edition-grid--both .edition-tag {
+    top: 4px;
+    left: 4px;
+    padding: 1px 6px;
+    font-size: 0.55rem;
+}
+
+.edition-grid--both .book-qty-row {
+    gap: 4px;
+    padding: 5px 2px;
+}
+
+.edition-grid--both .qty-btn {
+    width: 22px;
+    height: 22px;
+    font-size: 0.85rem;
+}
+
+.edition-grid--both .qty-display {
+    min-width: 14px;
+}
+
 /* --- Responsive --- */
 @media (max-width: 768px) {
     .order-layout {
@@ -220,5 +266,11 @@
 @media (max-width: 600px) {
     .order-page {
         padding-top: 200px;
+    }
+}
+
+@media (max-width: 420px) {
+    .order-book-grid.edition-grid--both {
+        grid-template-columns: repeat(2, 1fr);
     }
 }

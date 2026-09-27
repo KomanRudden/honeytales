@@ -112,50 +112,122 @@
 .bio-highlights {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    gap: 22px;
 }
 
-.bio-highlight-card {
-    border-radius: var(--radius);
-    padding: 24px 20px;
-    text-align: center;
+/* Highlight stickers: stitched edge like the language badge, slight tilts */
+.bio-sticker {
+    position: relative;
     background: #fff;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-    border-left: 3px solid #D4962A;
-    transition: transform var(--transition), box-shadow var(--transition);
+    border-radius: 22px;
+    padding: 20px 18px 22px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transform: rotate(-1.5deg);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow var(--transition);
 }
 
-.bio-highlight-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+.bio-sticker:nth-child(2) { transform: rotate(1.5deg); }
+.bio-sticker:nth-child(3) { transform: rotate(1deg); }
+.bio-sticker:nth-child(4) { transform: rotate(-1deg); }
+
+.bio-sticker::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 2px dashed rgba(212, 150, 42, 0.6);
+    border-radius: 17px;
+    pointer-events: none;
 }
 
-.bio-highlight-icon {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #FFF8E7, #FFEFC0);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+.bio-sticker:hover {
+    transform: rotate(0deg) translateY(-6px);
+    box-shadow: var(--shadow-hover);
+}
+
+.bio-sticker-visual {
+    height: 110px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
-.bio-highlight-icon img {
-    width: 34px;
-    height: 34px;
-    object-fit: contain;
+/* 4 Books: the covers fanned out like a hand of cards */
+.bio-sticker-books img {
+    width: 56px;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin: 0 -10px;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.bio-highlight-card h3 {
-    font-size: 1.1rem;
+.bio-sticker-books img:nth-child(1) { transform: rotate(-16deg) translateY(10px); }
+.bio-sticker-books img:nth-child(2) { transform: rotate(-5deg); }
+.bio-sticker-books img:nth-child(3) { transform: rotate(5deg); }
+.bio-sticker-books img:nth-child(4) { transform: rotate(16deg) translateY(10px); }
+
+.bio-sticker:hover .bio-sticker-books img:nth-child(1) { transform: rotate(-24deg) translate(-8px, 14px); }
+.bio-sticker:hover .bio-sticker-books img:nth-child(2) { transform: rotate(-8deg) translate(-3px, -4px); }
+.bio-sticker:hover .bio-sticker-books img:nth-child(3) { transform: rotate(8deg) translate(3px, -4px); }
+.bio-sticker:hover .bio-sticker-books img:nth-child(4) { transform: rotate(24deg) translate(8px, 14px); }
+
+/* 44 Poems: a big number in a honey circle (counts up via about.js) */
+.bio-count {
+    width: 104px;
+    height: 104px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--honey);
+    outline: 3px dashed rgba(255, 255, 255, 0.85);
+    outline-offset: -9px;
+    color: #fff;
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 3rem;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Centurion: map of South Africa with a bouncing pin */
+.bio-map {
+    width: 128px;
+    height: auto;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+    overflow: visible;
+}
+
+.bio-map-pin path,
+.bio-map-pin circle {
+    animation: pinBounce 2.4s ease-in-out infinite;
+}
+
+@keyframes pinBounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    70% { transform: translateY(-6px); }
+    80% { transform: translateY(0); }
+    88% { transform: translateY(-2px); }
+}
+
+.bio-sticker-photo {
+    width: 104px;
+    height: 104px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--honey);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.bio-sticker h3 {
+    font-size: 1.35rem;
     color: var(--brown);
-    margin-bottom: 6px;
-    font-weight: 700;
+    margin-bottom: 4px;
 }
 
-.bio-highlight-card p {
+.bio-sticker p {
     font-size: 0.85rem;
     color: var(--text-muted);
     line-height: 1.5;
@@ -169,138 +241,195 @@
 
 .about-features-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
 }
 
+/* Feature cards: a lighter take on the homepage collector cards */
 .about-feature {
-    border-radius: var(--radius);
-    padding: 32px 24px;
-    text-align: center;
     background: #fff;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-    border-top: 3px solid #D4962A;
-    transition: transform var(--transition), box-shadow var(--transition);
+    border-radius: 20px;
+    padding: 10px 10px 22px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow var(--transition);
 }
 
 .about-feature:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px) rotate(-1deg);
+    box-shadow: var(--shadow-hover);
 }
 
-.about-feature-icon {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #F0F5F2, #DCE8E0);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.about-feature:nth-child(even):hover {
+    transform: translateY(-8px) rotate(1deg);
+}
+
+.about-feature-art {
+    overflow: hidden;
+    border-radius: 14px;
     margin-bottom: 16px;
 }
 
-.about-feature-icon img {
-    width: 38px;
-    height: 38px;
-    object-fit: contain;
+.about-feature-art img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.about-feature:hover .about-feature-art img {
+    transform: scale(1.06);
 }
 
 .about-feature h3 {
-    font-size: 1.15rem;
+    font-size: 1.35rem;
     color: var(--brown);
-    margin-bottom: 10px;
-    font-weight: 700;
+    margin: 0 8px 8px;
 }
 
 .about-feature p {
     color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.7;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    margin: 0 10px;
+}
+
+.about-features-details {
+    margin-top: 32px;
+    text-align: center;
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 1.2rem;
+    color: var(--brown);
 }
 
 /* --- Testimonials --- */
 .about-testimonials-section {
     background: var(--cream);
     padding: 80px 0;
+    /* Waiting reviews sit just off to the side before sliding in */
+    overflow: hidden;
 }
 
-.testimonials-grid {
+/* One review at a time in a speech bubble, with a meerkat peeking out */
+.testimonial-carousel {
+    position: relative;
+    max-width: 720px;
+    margin: 0 auto;
+    padding-right: 40px;
+}
+
+.testimonial-slides {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
 }
 
 .testimonial-card {
-    border-radius: var(--radius);
-    padding: 32px 28px 24px;
-    background: #fff;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    grid-area: 1 / 1;
     display: flex;
     flex-direction: column;
-    gap: 0;
-    position: relative;
-    overflow: hidden;
-    border-left: 3px solid var(--brown);
-    transition: transform var(--transition), box-shadow var(--transition);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(40px) rotate(1deg);
+    transition: opacity 0.45s ease, transform 0.55s cubic-bezier(0.34, 1.3, 0.64, 1), visibility 0.45s;
 }
 
-.testimonial-card::before {
+.testimonial-card.is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+}
+
+.testimonial-card.is-leaving {
+    transform: translateX(-40px) rotate(-1deg);
+}
+
+.testimonial-bubble {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    border: 3px solid var(--honey);
+    border-radius: 28px;
+    padding: 30px 36px 32px;
+    box-shadow: var(--shadow);
+}
+
+/* Bubble tail pointing down at the reviewer */
+.testimonial-bubble::after {
+    content: '';
+    position: absolute;
+    left: 56px;
+    bottom: -20px;
+    width: 34px;
+    height: 34px;
+    background: #fff;
+    border-right: 3px solid var(--honey);
+    border-bottom: 3px solid var(--honey);
+    transform: skewX(20deg) rotate(45deg);
+    border-bottom-right-radius: 6px;
+}
+
+.testimonial-bubble::before {
     content: '\201C';
     position: absolute;
-    top: -10px;
-    left: 16px;
-    font-size: 7rem;
+    top: -6px;
+    right: 22px;
+    font-size: 6rem;
     line-height: 1;
     font-family: Georgia, serif;
-    opacity: 0.08;
-    color: var(--brown);
+    color: var(--honey);
+    opacity: 0.25;
     pointer-events: none;
-}
-
-.testimonial-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 .testimonial-stars {
     display: flex;
-    gap: 3px;
-    margin-bottom: 14px;
+    gap: 4px;
+    margin-bottom: 12px;
 }
 
 .testimonial-stars span {
-    font-size: 1.1rem;
-    color: #D4962A;
+    font-size: 1.4rem;
+    color: var(--honey);
+    display: inline-block;
+}
+
+.testimonial-card.is-active .testimonial-stars span {
+    animation: starPop 0.5s cubic-bezier(0.34, 1.8, 0.64, 1) both;
+}
+
+.testimonial-card.is-active .testimonial-stars span:nth-child(2) { animation-delay: 0.08s; }
+.testimonial-card.is-active .testimonial-stars span:nth-child(3) { animation-delay: 0.16s; }
+.testimonial-card.is-active .testimonial-stars span:nth-child(4) { animation-delay: 0.24s; }
+.testimonial-card.is-active .testimonial-stars span:nth-child(5) { animation-delay: 0.32s; }
+
+@keyframes starPop {
+    from { transform: scale(0) rotate(-40deg); opacity: 0; }
+    to { transform: scale(1) rotate(0deg); opacity: 1; }
 }
 
 .testimonial-quote {
-    color: var(--text-muted);
-    font-style: italic;
-    font-size: 0.95rem;
-    line-height: 1.8;
-    flex: 1;
-    margin-bottom: 20px;
+    color: var(--text-dark);
+    font-size: 1.15rem;
+    line-height: 1.75;
 }
 
 .testimonial-author-row {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(0,0,0,0.06);
+    margin: 30px 0 0 36px;
 }
 
 .testimonial-avatar {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-    font-size: 0.9rem;
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 1.2rem;
     color: white;
     flex-shrink: 0;
     background: linear-gradient(135deg, var(--brown), var(--brown-light));
@@ -309,13 +438,92 @@
 .testimonial-author-info strong {
     display: block;
     font-weight: 700;
-    color: #333;
-    font-size: 0.9rem;
+    color: var(--brown);
+    font-size: 0.95rem;
 }
 
 .testimonial-author-info span {
     font-size: 0.8rem;
     color: var(--text-muted);
+}
+
+.testimonial-peek {
+    position: absolute;
+    z-index: 1;
+    right: -30px;
+    top: 14px;
+    height: 170px;
+    width: auto;
+    transform: rotate(8deg);
+    filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.15));
+    animation: meerkatPeek 5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes meerkatPeek {
+    0%, 100% { transform: rotate(8deg) translateX(0); }
+    45%, 55% { transform: rotate(3deg) translateX(10px); }
+}
+
+.testimonial-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 28px;
+}
+
+.testimonial-nav {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 2px solid var(--action);
+    background: #fff;
+    color: var(--action);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transition), color var(--transition);
+}
+
+.testimonial-nav:hover {
+    background: var(--action);
+    color: #fff;
+}
+
+.testimonial-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.testimonial-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 0;
+    padding: 0;
+    background: rgba(58, 123, 90, 0.25);
+    cursor: pointer;
+    transition: background var(--transition), transform var(--transition);
+}
+
+.testimonial-dot.is-active {
+    background: var(--action);
+    transform: scale(1.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .testimonial-card,
+    .testimonial-card.is-active .testimonial-stars span,
+    .testimonial-peek,
+    .bio-map-pin path,
+    .bio-map-pin circle {
+        animation: none;
+        transition: none;
+    }
 }
 
 /* --- Order Section (reuse from books.css) --- */
@@ -372,11 +580,7 @@
 
     .about-features-grid {
         grid-template-columns: 1fr 1fr;
-    }
-
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-        max-width: 520px;
+        max-width: 640px;
         margin: 0 auto;
     }
 }
@@ -386,10 +590,23 @@
         font-size: 2.4rem;
     }
 
-    .about-features-grid {
-        grid-template-columns: 1fr;
-        max-width: 400px;
-        margin: 0 auto;
+    .testimonial-carousel {
+        padding-right: 0;
+    }
+
+    .testimonial-peek {
+        height: 110px;
+        top: auto;
+        bottom: 40px;
+        right: -6px;
+    }
+
+    .testimonial-bubble {
+        padding: 26px 24px 28px;
+    }
+
+    .testimonial-quote {
+        font-size: 1.02rem;
     }
 
     .bio-highlights {
@@ -397,8 +614,38 @@
     }
 }
 
+@media (max-width: 560px) {
+    .about-features-grid {
+        grid-template-columns: 1fr;
+        max-width: 360px;
+    }
+}
+
 @media (max-width: 480px) {
     .bio-highlights {
-        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .bio-sticker {
+        padding: 16px 10px 18px;
+    }
+
+    .bio-sticker-books img {
+        width: 40px;
+        margin: 0 -7px;
+    }
+
+    .bio-count,
+    .bio-sticker-photo {
+        width: 88px;
+        height: 88px;
+    }
+
+    .bio-count {
+        font-size: 2.5rem;
+    }
+
+    .bio-map {
+        width: 104px;
     }
 }

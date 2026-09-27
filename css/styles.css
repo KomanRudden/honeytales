@@ -210,6 +210,38 @@ body:has(.free-delivery-banner) {
     display: flex;
     list-style: none;
     gap: 8px;
+    margin-left: auto;
+}
+
+/* "Also in Afrikaans" badge beside the logo */
+.nav-afr-badge {
+    margin-left: 20px;
+    padding: 5px 16px;
+    border-radius: 50px;
+    background: var(--honey);
+    border: 2px dashed rgba(255, 255, 255, 0.85);
+    outline: 3px solid var(--honey);
+    color: #fff;
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 1rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    transform: rotate(-3deg);
+    cursor: pointer;
+    transition: background var(--transition), outline-color var(--transition);
+}
+
+.nav-afr-badge:hover,
+.nav-afr-badge:focus-visible {
+    background: var(--honey-dark);
+    outline-color: var(--honey-dark);
+}
+
+.nav-afr-badge strong {
+    font-size: 1.15rem;
+    font-weight: normal;
 }
 
 .nav-links a {
@@ -2837,4 +2869,283 @@ body:has(.free-delivery-banner) {
     0%   { transform: scale(1); }
     50%  { transform: scale(1.3); }
     100% { transform: scale(1); }
+}
+
+/* --- Did You Know? fact deck (collector cards) --- */
+.fact-deck {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1000px;
+    margin: 40px auto 0;
+}
+
+.fact-collector {
+    position: relative;
+    background: var(--white);
+    border: 3px solid var(--honey);
+    border-radius: 20px;
+    padding: 12px 12px 22px;
+    box-shadow: var(--shadow);
+    transform: rotate(var(--tilt, 0deg));
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow var(--transition);
+}
+
+.fact-collector::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border: 2px dashed rgba(212, 150, 42, 0.55);
+    border-radius: 15px;
+    pointer-events: none;
+}
+
+.fact-collector:hover {
+    transform: rotate(0deg) translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+}
+
+.fact-collector-art {
+    position: relative;
+}
+
+.fact-collector-art img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+}
+
+.fact-collector:hover .fact-collector-art img {
+    animation: factWobble 0.7s ease-in-out;
+}
+
+@keyframes factWobble {
+    0%, 100% { transform: rotate(0deg); }
+    30% { transform: rotate(-2deg) scale(1.03); }
+    60% { transform: rotate(1.5deg) scale(1.03); }
+}
+
+.fact-collector-book {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 1;
+    padding: 2px 10px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--brown);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: background var(--transition), color var(--transition);
+}
+
+.fact-collector-book:hover {
+    background: var(--action);
+    color: var(--white);
+}
+
+/* Name on a ribbon overlapping the picture */
+.fact-collector-name {
+    position: relative;
+    width: fit-content;
+    margin: -20px auto 0;
+    padding: 6px 28px;
+    background: var(--action);
+    color: var(--white);
+    font-size: 1.45rem;
+    font-weight: normal;
+    clip-path: polygon(0 0, 100% 0, 94% 50%, 100% 100%, 0 100%, 6% 50%);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.fact-collector-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 12px;
+    text-align: center;
+}
+
+.fact-collector-num {
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--honey-dark);
+}
+
+.fact-collector-label {
+    margin-top: 2px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.fact-collector p {
+    margin: 10px 8px 0;
+    text-align: center;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--text-muted);
+}
+
+/* Shuffle: old cards drop away, new ones are dealt in one by one */
+.fact-deck.is-leaving .fact-collector {
+    animation: factLeave 0.36s ease-in forwards;
+    animation-delay: calc(var(--i) * 0.05s);
+}
+
+.fact-deck.is-dealing .fact-collector {
+    animation: factDeal 0.55s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+    animation-delay: calc(var(--i) * 0.1s);
+}
+
+@keyframes factLeave {
+    to { transform: translateY(40px) rotate(8deg) scale(0.92); opacity: 0; }
+}
+
+@keyframes factDeal {
+    from { transform: translateY(-60px) rotate(-12deg) scale(0.85); opacity: 0; }
+    to { transform: rotate(var(--tilt, 0deg)); opacity: 1; }
+}
+
+.fact-deck-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.fact-shuffle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+}
+
+.fact-shuffle-icon {
+    display: inline-block;
+    font-size: 1.3rem;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.fact-shuffle:hover .fact-shuffle-icon {
+    transform: rotate(200deg) scale(1.15);
+}
+
+.fact-shuffle:disabled {
+    opacity: 0.8;
+    cursor: default;
+}
+
+@media (max-width: 860px) {
+    .fact-deck {
+        grid-template-columns: 1fr;
+        max-width: 340px;
+        gap: 28px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fact-collector,
+    .fact-collector:hover .fact-collector-art img {
+        transition: none;
+        animation: none;
+    }
+}
+
+/* --- English / Afrikaans editions --- */
+.lang-af-only {
+    display: none !important;
+}
+
+html[lang="af"] .lang-af-only {
+    display: block !important;
+}
+
+html[lang="af"] .lang-en-only {
+    display: none !important;
+}
+
+/* Order tiles: the other edition is hidden until the checkbox is ticked */
+.edition-hidden {
+    display: none !important;
+}
+
+html[lang="af"] [data-edition="af"] {
+    order: -1;
+}
+
+.book-order-tile,
+.order-book-tile {
+    position: relative;
+}
+
+.edition-tag {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    padding: 2px 8px;
+    border-radius: 50px;
+    background: rgba(43, 80, 63, 0.9);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    pointer-events: none;
+}
+
+.book-order-tile[data-edition="af"] .edition-tag,
+.order-book-tile[data-edition="af"] .edition-tag {
+    background: rgba(212, 150, 42, 0.95);
+}
+
+.edition-toggle {
+    margin-bottom: 14px;
+}
+
+/* Small screens: the homepage picker's 4 columns get narrow, so the tag
+   becomes a strip under the cover and the controls shrink to fit */
+@media (max-width: 600px) {
+    .book-order-grid {
+        gap: 8px;
+    }
+
+    .book-order-tile .edition-tag {
+        position: static;
+        display: block;
+        border-radius: 0;
+        padding: 2px 0;
+        text-align: center;
+        font-size: 0.55rem;
+        letter-spacing: 0.02em;
+    }
+
+    .book-order-title {
+        font-size: 0.72rem;
+        padding: 4px 2px;
+    }
+
+    .book-order-tile .book-qty-row {
+        gap: 2px;
+        padding: 4px 0;
+    }
+
+    .book-order-tile .qty-btn {
+        width: 20px;
+        height: 20px;
+        font-size: 0.8rem;
+        border-width: 1.5px;
+    }
+
+    .book-order-tile .qty-display {
+        min-width: 12px;
+        font-size: 0.9rem;
+    }
 }

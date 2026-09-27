@@ -4,6 +4,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // English / Afrikaans strings (js/i18n.js); plain English where it isn't loaded
+    const i18n = window.HT_I18N;
+    const t = (key) => i18n ? i18n.t(key) : key;
+
     // --- Navbar scroll effect ---
     const navbar = document.getElementById('navbar');
     if (navbar) {
@@ -117,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const totalAmountEl = document.getElementById('orderTotalAmount');
     const getOrderSummary = initQtyCounters(orderForm, totalAmountEl);
+    if (i18n) i18n.initEditionPicker(orderForm.querySelector('.order-book-grid'), document.getElementById('otherEditionToggle'));
 
     orderForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -126,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = document.getElementById('name');
         const nameError = document.getElementById('nameError');
         if (name.value.trim().length < 2) {
-            nameError.textContent = 'Please enter your name';
+            nameError.textContent = t('errName');
             name.classList.add('error');
             isValid = false;
         } else {
@@ -139,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const emailError = document.getElementById('emailError');
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(email.value.trim())) {
-            emailError.textContent = 'Please enter a valid email address';
+            emailError.textContent = t('errEmail');
             email.classList.add('error');
             isValid = false;
         } else {
@@ -152,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const phoneError = document.getElementById('phoneError');
         const phoneVal = phone.value.replace(/[\s\-()]/g, '');
         if (phoneVal.length < 7) {
-            phoneError.textContent = 'Please enter your cell number';
+            phoneError.textContent = t('errPhone');
             phone.classList.add('error');
             isValid = false;
         } else {
@@ -164,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const address = document.getElementById('address');
         const addressError = document.getElementById('addressError');
         if (address.value.trim().length < 5) {
-            addressError.textContent = 'Please enter your delivery address';
+            addressError.textContent = t('errAddress');
             address.classList.add('error');
             isValid = false;
         } else {
@@ -176,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const country = document.getElementById('country');
         const countryError = document.getElementById('countryError');
         if (country.value.trim().length < 2) {
-            countryError.textContent = 'Please enter your country';
+            countryError.textContent = t('errCountry');
             country.classList.add('error');
             isValid = false;
         } else {
@@ -189,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const booksOrdered = document.getElementById('booksOrdered');
         const summary = getOrderSummary();
         if (summary.length === 0) {
-            booksError.textContent = 'Please add at least one book';
+            booksError.textContent = t('errBooks');
             isValid = false;
         } else {
             booksError.textContent = '';
@@ -200,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const submitBtn = orderForm.querySelector('button[type="submit"]');
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending…';
+        submitBtn.textContent = t('sending');
 
         fetch('https://formspree.io/f/xqeyoekr', {
             method: 'POST',
@@ -215,15 +220,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     window.location.href = '/';
                 }, 2000);
             } else {
-                alert('Something went wrong. Please email us directly at admin@honeytales.co.za');
+                alert(t('sendFailed'));
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Send Order Request';
+                submitBtn.textContent = t('sendOrder');
             }
         })
         .catch(() => {
-            alert('Something went wrong. Please email us directly at admin@honeytales.co.za');
+            alert(t('sendFailed'));
             submitBtn.disabled = false;
-            submitBtn.textContent = 'Send Order Request';
+            submitBtn.textContent = t('sendOrder');
         });
     });
 

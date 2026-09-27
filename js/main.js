@@ -30,6 +30,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // English / Afrikaans strings (js/i18n.js); plain English where it isn't loaded
+    const i18n = window.HT_I18N;
+    const t = (key) => i18n ? i18n.t(key) : key;
+
     // --- Live exchange rates (ZAR) ---
     let fxRates = null;
     const contactFxConvert = document.getElementById('contactFxConvert');
@@ -108,6 +112,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const statAge   = document.getElementById('statAge');
     const statPrice = document.getElementById('statPrice');
 
+    let ageShown = false;
+    if (i18n && statAge) {
+        i18n.onChange(() => {
+            statAge.style.minWidth = '';
+            if (ageShown) statAge.textContent = t('ageFinal');
+        });
+    }
+
     if (statBooks) {
         // Chain: Books → Poems → Price → Age → Videos
         scrollUp(statBooks, '4', () => {
@@ -115,15 +127,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 scrollUp(statPrice, 'R180', () => {
                     startPriceCycle(); // begin cycling currencies after 10s
                     // Lock width to final "Ages 0-100" size so the ? doesn't cause reflow
-                    statAge.textContent = 'Ages 0\u2013100';
+                    statAge.textContent = t('ageFinal');
                     statAge.style.minWidth = statAge.offsetWidth + 'px';
                     statAge.style.textAlign = 'center';
                     statAge.textContent = '\u2013';
 
                     // Age: first scroll up "Ages 0–?", then 1s later scroll up "Ages 0–100"
-                    scrollUp(statAge, 'Ages 0\u2013?', () => {
+                    scrollUp(statAge, t('ageInterim'), () => {
                         setTimeout(() => {
-                            scrollUp(statAge, 'Ages 0\u2013100', () => {
+                            scrollUp(statAge, t('ageFinal'), () => {
+                                ageShown = true;
                                 startHeroVideos();
                             });
                         }, 1000);
@@ -368,6 +381,132 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initCardIconAnimations();
 
+    // --- Did You Know? fact deck: 3 cards at a time, shuffled from the books ---
+    const BOOK_PAGES = { 1: 'books/africa.html', 2: 'books/goggas.html', 3: 'books/friends.html', 4: 'books/wild.html' };
+    const FACT_CARDS = [
+        { img: 'giraffe', book: 1,
+          en: { name: 'Giraffe', stat: '5.5 m', label: 'tall – tallest on Earth', fact: 'Their tongue is about 50 cm long and dark purple to protect it from sunburn!' },
+          af: { name: 'Kameelperd', stat: '5,5 m', label: 'lank – die langste op aarde', fact: 'Hul tong is omtrent 50 cm lank en donkerpers om dit teen sonbrand te beskerm!' } },
+        { img: 'elephant', book: 1,
+          en: { name: 'Elephant', stat: '40,000', label: 'muscles in one trunk', fact: 'Baby elephants suck their trunks for comfort, just like human babies suck their thumbs.' },
+          af: { name: 'Olifant', stat: '40 000', label: 'spiere in een slurp', fact: 'Olifantbabas suig aan hul slurpe vir troos, net soos mensbabas aan hul duime suig.' } },
+        { img: 'lion', book: 1,
+          en: { name: 'Lion', stat: '8 km', label: 'away you can hear a roar', fact: 'Lions sleep up to 20 hours a day to save energy – the champions of napping!' },
+          af: { name: 'Leeu', stat: '8 km', label: 'ver kan jy ’n brul hoor', fact: 'Leeus slaap tot 20 uur per dag om energie te spaar – die kampioene van middagslapies!' } },
+        { img: 'bee', book: 1,
+          en: { name: 'Honey Bee', stat: '5,000', label: 'flowers visited in one day', fact: 'Bees do a special waggle dance to tell the other bees where the food is.' },
+          af: { name: 'Heuningby', stat: '5 000', label: 'blomme besoek in een dag', fact: 'Bye doen ’n spesiale wikkeldans om die ander bye te wys waar die kos is.' } },
+        { img: 'ladybird', book: 1,
+          en: { name: 'Ladybird', stat: '5,000', label: 'aphids eaten in a lifetime', fact: 'When scared, they play dead and release a smelly yellow liquid from their knees!' },
+          af: { name: 'Liewenheersbesie', stat: '5 000', label: 'plantluise geëet in een leeftyd', fact: 'As hulle bang is, speel hulle dood en skei ’n stink geel vloeistof uit hul knieë af!' } },
+        { img: 'frog', book: 2,
+          en: { name: 'Frog', stat: '130+', label: 'frog species in South Africa', fact: 'Frogs don’t drink water – they soak it up through their skin! Some can even freeze solid in winter and thaw out in spring.' },
+          af: { name: 'Padda', stat: '130+', label: 'paddaspesies in Suid-Afrika', fact: 'Paddas drink nie water nie – hulle absorbeer dit deur hul vel! Sommige kan selfs in die winter heeltemal vries en in die lente weer ontdooi.' } },
+        { img: 'mosquito', book: 2,
+          en: { name: 'Mosquito', stat: '50 m', label: 'away they can smell you', fact: 'Only female mosquitoes bite. They find you by sniffing out the carbon dioxide you breathe out!' },
+          af: { name: 'Muskiet', stat: '50 m', label: 'ver kan hulle jou ruik', fact: 'Net wyfiemuskiete byt. Hulle vind jou deur die koolstofdioksied wat jy uitasem, uit te snuffel!' } },
+        { img: 'baboon', book: 3,
+          en: { name: 'Baboon', stat: '300', label: 'baboons in one troop', fact: 'Baboons groom each other to build friendships, and use more than 30 different calls.' },
+          af: { name: 'Bobbejaan', stat: '300', label: 'bobbejane in een trop', fact: 'Bobbejane vlooi mekaar om vriendskappe te bou, en gebruik meer as 30 verskillende roepe.' } },
+        { img: 'warthog', book: 3,
+          en: { name: 'Warthog', stat: '48 km/h', label: 'top running speed', fact: 'Warthogs kneel on their front legs to graze – they even have special knee pads!' },
+          af: { name: 'Vlakvark', stat: '48 km/h', label: 'topspoed as hulle hardloop', fact: 'Vlakvarke kniel op hul voorpote om te wei – hulle het selfs spesiale kniekussings!' } },
+        { img: 'hippo', book: 3,
+          en: { name: 'Hippo', stat: '16 hours', label: 'a day spent in water', fact: 'Hippos make their own pink sunscreen, and can run up to 30 km/h on land!' },
+          af: { name: 'Seekoei', stat: '16 uur', label: 'per dag in die water', fact: 'Seekoeie maak hul eie pienk sonskerm, en kan tot 30 km/h op land hardloop!' } },
+        { img: 'cheetah', book: 4,
+          en: { name: 'Cheetah', stat: '112 km/h', label: 'fastest land animal', fact: 'Unlike other big cats, cheetahs purr instead of roar!' },
+          af: { name: 'Jagluiperd', stat: '112 km/h', label: 'die vinnigste landdier', fact: 'Anders as ander grootkatte spin jagluiperds eerder as om te brul!' } },
+        { img: 'crocodile', book: 4,
+          en: { name: 'Crocodile', stat: '200 million', label: 'years on Earth', fact: 'Crocodiles outlived the dinosaurs, and can go months without eating after a big meal.' },
+          af: { name: 'Krokodil', stat: '200 miljoen', label: 'jaar op aarde', fact: 'Krokodille het die dinosourusse oorleef, en kan maande sonder kos klaarkom ná ’n groot maal.' } }
+    ];
+
+    const factDeck = document.getElementById('factDeck');
+    const factShuffle = document.getElementById('factShuffle');
+
+    if (factDeck && factShuffle) {
+        const HAND_SIZE = 3;
+        const TILTS = ['-2deg', '1.5deg', '-1deg'];
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let hand = [];
+        let bag = [];
+
+        function shuffled(list) {
+            const out = list.slice();
+            for (let i = out.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [out[i], out[j]] = [out[j], out[i]];
+            }
+            return out;
+        }
+
+        // Deals every fact once before any repeats, never re-dealing a card that's on the table
+        function drawHand() {
+            const next = [];
+            while (next.length < HAND_SIZE) {
+                if (!bag.length) {
+                    bag = shuffled(FACT_CARDS.map((_, i) => i).filter(i => !hand.includes(i) && !next.includes(i)));
+                }
+                next.push(bag.pop());
+            }
+            return next;
+        }
+
+        function cardHtml(index, slot) {
+            const card = FACT_CARDS[index];
+            const af = i18n && i18n.lang === 'af';
+            const text = af ? card.af : card.en;
+            const bookLabel = (af ? 'Boek ' : 'Book ') + card.book;
+            const alt = af ? `${text.name} uit Honey Tales Afrika Boek ${card.book}` : `${text.name} from Honey Tales Africa Book ${card.book}`;
+            return `
+                <article class="fact-collector" style="--tilt: ${TILTS[slot]}; --i: ${slot}">
+                    <div class="fact-collector-art">
+                        <img src="assets/images/facts/${card.img}.jpg" alt="${alt}" width="640" height="480">
+                        <a class="fact-collector-book" href="${BOOK_PAGES[card.book]}">${bookLabel}</a>
+                    </div>
+                    <h3 class="fact-collector-name">${text.name}</h3>
+                    <div class="fact-collector-stat">
+                        <span class="fact-collector-num">${text.stat}</span>
+                        <span class="fact-collector-label">${text.label}</span>
+                    </div>
+                    <p>${text.fact}</p>
+                </article>`;
+        }
+
+        function renderHand(animate) {
+            factDeck.innerHTML = hand.map(cardHtml).join('');
+            if (animate && !reduceMotion) factDeck.classList.add('is-dealing');
+        }
+
+        hand = drawHand();
+        renderHand(false);
+
+        factShuffle.addEventListener('click', () => {
+            if (factShuffle.disabled) return;
+            factShuffle.disabled = true;
+            factDeck.classList.remove('is-dealing');
+            if (reduceMotion) {
+                hand = drawHand();
+                renderHand(false);
+                factShuffle.disabled = false;
+                return;
+            }
+            factDeck.classList.add('is-leaving');
+            setTimeout(() => {
+                factDeck.classList.remove('is-leaving');
+                hand = drawHand();
+                renderHand(true);
+                setTimeout(() => {
+                    factDeck.classList.remove('is-dealing');
+                    factShuffle.disabled = false;
+                }, 750);
+            }, 380);
+        });
+
+        if (i18n) i18n.onChange(() => renderHand(false));
+    }
+
     // --- Card Stacking Scroll Animation ---
     function initCardStacking() {
         if (typeof gsap === 'undefined' || !gsap) return;
@@ -587,6 +726,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             return lines;
         };
+
+        if (i18n) i18n.initEditionPicker(bookOrderSelector, document.getElementById('otherEditionToggle'));
     }
 
     // --- Contact Form Validation & Submission ---
@@ -601,7 +742,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = document.getElementById('name');
         const nameError = document.getElementById('nameError');
         if (name.value.trim().length < 2) {
-            nameError.textContent = 'Please enter your name';
+            nameError.textContent = t('errName');
             name.classList.add('error');
             isValid = false;
         } else {
@@ -614,7 +755,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const emailError = document.getElementById('emailError');
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(email.value.trim())) {
-            emailError.textContent = 'Please enter a valid email address';
+            emailError.textContent = t('errEmail');
             email.classList.add('error');
             isValid = false;
         } else {
@@ -627,7 +768,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const phoneError = document.getElementById('phoneError');
         const phoneVal = phone.value.replace(/[\s\-()]/g, '');
         if (phoneVal.length < 7) {
-            phoneError.textContent = 'Please enter your cell number';
+            phoneError.textContent = t('errPhone');
             phone.classList.add('error');
             isValid = false;
         } else {
@@ -646,7 +787,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const totalEl = document.getElementById('contactTotalAmount');
 
             if (summary.length === 0) {
-                booksError.textContent = 'Please add at least one book';
+                booksError.textContent = t('errBooks');
                 isValid = false;
             } else {
                 booksError.textContent = '';
@@ -654,7 +795,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (deliveryAddress.value.trim().length < 5) {
-                addressError.textContent = 'Please enter your delivery address';
+                addressError.textContent = t('errAddress');
                 deliveryAddress.classList.add('error');
                 isValid = false;
             } else {
@@ -665,7 +806,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const deliveryCountry = document.getElementById('deliveryCountry');
             const countryError = document.getElementById('countryError');
             if (deliveryCountry.value.trim().length < 2) {
-                countryError.textContent = 'Please enter your country';
+                countryError.textContent = t('errCountry');
                 deliveryCountry.classList.add('error');
                 isValid = false;
             } else {
@@ -680,7 +821,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const message = document.getElementById('message');
         const messageError = document.getElementById('messageError');
         if (message.value.trim().length < 2) {
-            messageError.textContent = 'Please enter a message';
+            messageError.textContent = t('errMessage');
             message.classList.add('error');
             isValid = false;
         } else {
@@ -691,7 +832,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isValid) {
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending…';
+            submitBtn.textContent = t('sending');
 
             fetch('https://formspree.io/f/xqeyoekr', {
                 method: 'POST',
@@ -705,15 +846,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     bookOrderSelector.classList.remove('show');
                     setTimeout(() => formSuccess.classList.remove('show'), 5000);
                 } else {
-                    alert('Something went wrong. Please email us directly at admin@honeytales.co.za');
+                    alert(t('sendFailed'));
                 }
             })
             .catch(() => {
-                alert('Something went wrong. Please email us directly at admin@honeytales.co.za');
+                alert(t('sendFailed'));
             })
             .finally(() => {
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Send Message';
+                submitBtn.textContent = t('send');
             });
         }
     });
@@ -851,6 +992,129 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    const animalFactsAf = {
+        lions: {
+            title: 'Leeus',
+            facts: [
+                'Leeus is die enigste katte wat in groepe leef. Só ’n groep word ’n trop genoem en kan tot 30 lede hê.',
+                '’n Leeu se brul kan tot 8 kilometer ver gehoor word!',
+                'Leeus slaap tot 20 uur per dag om energie vir die jag te spaar.',
+                'Leeuwyfies doen die meeste van die jag en werk dikwels saam as ’n span.',
+                'Leeuwelpies word met kolle gebore wat vervaag soos hulle ouer word.'
+            ]
+        },
+        rhino: {
+            title: 'Renoster',
+            facts: [
+                '’n Renoster se horing is van keratien gemaak, dieselfde stof as jou vingernaels!',
+                'Witrenosters is nie regtig wit nie – die naam kom van die Nederlandse woord "wijd", wat breed beteken en hul bek beskryf.',
+                'Renosters sien baie swak, maar hulle kan uitstekend ruik en hoor.',
+                '’n Groep renosters word in Engels ’n "crash" genoem.',
+                'Renosterkalfies kan binne ’n uur ná hul geboorte opstaan.'
+            ]
+        },
+        zebras: {
+            title: 'Sebras',
+            facts: [
+                'Elke sebra het ’n unieke streeppatroon, net soos mense se vingerafdrukke!',
+                'Sebrastrepe help dalk om vlieë en ander bytende insekte te verwar.',
+                'Sebravullens kan binne net een uur ná hul geboorte hardloop.',
+                'Sebras slaap staan-staan sodat hulle vinnig van roofdiere kan wegkom.',
+                '’n Groep sebras word in Engels ’n "dazzle" genoem – dit beteken "verblind". Hoe gepas!'
+            ]
+        },
+        bees: {
+            title: 'Bye',
+            facts: [
+                '’n Enkele by kan tot 5 000 blomme op een dag besoek!',
+                'Heuningbye doen ’n spesiale "wikkeldans" om ander bye te wys waar kos is.',
+                'Bye het vyf oë – twee groot oë en drie piepklein oëtjies bo-op hul kop.',
+                '’n Teelepel heuning is die lewenswerk van omtrent 12 bye.',
+                'Die koninginby kan tot 2 000 eiers op ’n enkele dag lê!'
+            ]
+        },
+        ladybird: {
+            title: 'Liewenheersbesie',
+            facts: [
+                'Liewenheersbesies kan tot 5 000 plantluise (klein plantgoggas) in hul leeftyd eet!',
+                '’n Liewenheersbesie se helder kleure waarsku roofdiere dat hulle aaklig smaak.',
+                'As hulle bang is, speel liewenheersbesies dood en skei ’n stink geel vloeistof uit hul knieë af.',
+                'Daar is meer as 5 000 verskillende spesies liewenheersbesies regoor die wêreld.',
+                'In baie kulture word liewenheersbesies as ’n teken van geluk beskou.'
+            ]
+        },
+        giraffe: {
+            title: 'Kameelperd',
+            facts: [
+                'Kameelperde is die langste diere op aarde – hulle kan tot 5,5 meter lank word!',
+                '’n Kameelperd se tong is omtrent 50 sentimeter lank en donkerpers om dit teen sonbrand te beskerm.',
+                'Kameelperde het net omtrent 30 minute slaap per dag nodig, dikwels in kort slapies.',
+                'Kameelperdkalfies kan binne ’n uur ná hul geboorte staan en loop – en hulle is reeds 1,8 meter lank!',
+                'Geen twee kameelperde het dieselfde kolpatroon nie, net soos mense se vingerafdrukke.'
+            ]
+        },
+        tortoise: {
+            title: 'Mevrou Skilpad',
+            facts: [
+                'Sommige skilpaaie kan langer as 150 jaar leef – hulle is van die diere wat die langste leef!',
+                '’n Skilpad se dop is eintlik deel van sy geraamte en bestaan uit omtrent 60 bene.',
+                'Skilpaaie is al meer as 200 miljoen jaar op aarde – hulle het saam met die dinosourusse geleef!',
+                'Skilpaaie kan aanraking deur hul dop voel, want dit het senuwee-eindes.',
+                'Die grootste skilpadspesie kan meer as 400 kilogram weeg.'
+            ]
+        },
+        elephants: {
+            title: 'Olifante',
+            facts: [
+                'Olifante is die grootste landdiere op aarde en kan tot 6 000 kilogram weeg!',
+                '’n Olifant se slurp het meer as 40 000 spiere en kan iets so klein soos ’n grondboontjie optel.',
+                'Olifante is van die min diere wat hulself in ’n spieël kan herken.',
+                'Olifantbabas suig aan hul slurpe vir troos, net soos mensbabas aan hul duime suig!',
+                'Olifante vergeet nooit nie – hulle het ’n ongelooflike geheue en kan vriende vir dekades onthou.'
+            ]
+        },
+        gecko: {
+            title: 'Geitjie',
+            facts: [
+                'Geitjies kan teen mure loop en selfs onderstebo teen plafonne, danksy miljoene piepklein haartjies op hul pootjies!',
+                'Die meeste geitjies het nie ooglede nie, so hulle lek hul oë om dit skoon te hou.',
+                'Geitjies kan hul stert laat val om van roofdiere te ontsnap – en dit groei weer terug!',
+                'Sommige geitjiespesies kan van kleur verander om by hul omgewing in te pas.',
+                'Geitjies is van die min akkedisse wat geluide kan maak – hulle tjirp en klik!'
+            ]
+        },
+        shongololo: {
+            title: 'Shongololo',
+            facts: [
+                'Shongololo is die Zoeloenaam vir ’n duisendpoot – dit beteken "om op te rol".',
+                'Al beteken die naam "duisendpoot", het die meeste duisendpote tussen 80 en 400 pote.',
+                'Duisendpote is van die oudste landdiere – meer as 400 miljoen jaar oud!',
+                'Wanneer hulle bedreig word, krul shongololos in ’n stywe spiraal op om hul sagte onderlyf te beskerm.',
+                'Shongololos is nuttige tuindiertjies – hulle breek dooie blare af en verryk die grond.'
+            ]
+        },
+        hyena: {
+            title: 'Hiëna',
+            facts: [
+                '’n Gevlekte hiëna se giggelroep kan tot 5 kilometer ver gehoor word!',
+                'Hiënas het een van die sterkste byte in die diereryk – sterk genoeg om bene te kraak.',
+                'Gevlekte hiënawyfies is groter en meer dominant as die mannetjies.',
+                'Hiënas is eintlik nader verwant aan katte as aan honde!',
+                'Hiënawelpies word met oop oë gebore en kan van geboorte af sien.'
+            ]
+        },
+        meerkat: {
+            title: 'Meerkat',
+            facts: [
+                'Meerkatte leef in groepe van tot 30 lede!',
+                'Meerkat-wagte staan op hul agterpote om uit te kyk vir roofdiere en blaf om die groep te waarsku.',
+                'Meerkatte is immuun teen sekere soorte gif, so hulle kan skerpioene en sommige slange sonder skade eet!',
+                'Meerkatkleintjies leer jag by volwassenes wat vir hulle lewende prooi bring om mee te oefen.',
+                'Meerkatte het donker kolle om hul oë wat soos ingeboude sonbrille werk en die glans verminder.'
+            ]
+        }
+    };
+
     const poemModal = document.getElementById('poemModal');
     const poemModalImg = document.getElementById('poemModalImg');
     const poemModalTitle = document.getElementById('poemModalTitle');
@@ -860,12 +1124,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function openPoemModal(card) {
         const animal = card.dataset.animal;
         const imgSrc = card.querySelector('img:not(.click-me-hint)').src;
-        const data = animalFacts[animal];
+        const data = (i18n && i18n.lang === 'af' && animalFactsAf[animal]) || animalFacts[animal];
 
         if (!data) return;
 
         poemModalImg.src = imgSrc;
-        poemModalImg.alt = data.title + ' illustration';
+        poemModalImg.alt = data.title + ' ' + t('illustration');
         poemModalTitle.textContent = data.title;
 
         poemModalFacts.innerHTML = '';

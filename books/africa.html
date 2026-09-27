@@ -11,8 +11,8 @@
       gtag('config', 'G-DBXV2L0RBS');
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Honey Tales Africa – Book 1 | Poems for Young and Old</title>
-    <meta name="description" content="Honey Tales Africa Book 1 – 11 delightful poems about African wildlife by Carol Honey. Lions, Giraffes, Elephants and more!">
+    <title data-i18n="b1.title">Honey Tales Africa – Book 1 | Poems for Young and Old</title>
+    <meta name="description" data-i18n-content="b1.meta" content="Honey Tales Africa Book 1 – 11 delightful poems about African wildlife by Carol Honey. Lions, Giraffes, Elephants and more!">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -26,7 +26,7 @@
     <!-- Free Delivery Banner -->
     <div class="free-delivery-banner">
         <span class="free-delivery-icon">🚚</span>
-        <span class="free-delivery-text"><span class="fd-long">Order all 4 books and get <strong>free courier delivery</strong> anywhere in South Africa!</span><span class="fd-short">All 4 books = <strong>free delivery</strong> in SA!</span></span>
+        <span class="free-delivery-text"><span class="fd-long" data-i18n="banner.long">Order all 4 books and get <strong>free courier delivery</strong> anywhere in South Africa!</span><span class="fd-short" data-i18n="banner.short">All 4 books = <strong>free delivery</strong> in SA!</span></span>
         <span class="free-delivery-icon">🇿🇦</span>
     </div>
 
@@ -36,18 +36,19 @@
             <a href="/" class="nav-logo">
                 <img src="../assets/images/bee.png" alt="Honey Tales Africa" class="nav-logo-img">
             </a>
+            <button type="button" class="nav-afr-badge" id="langToggle" lang="af" data-i18n="nav.langToggle" aria-label="Lees hierdie bladsy in Afrikaans" data-i18n-aria-label="nav.langToggleLabel">Ook in <strong>Afrikaans!</strong></button>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="/">Home</a></li>
-                <li class="nav-hidden"><a href="africa.html">Books</a></li>
-                <li><a href="/#animals">Animals</a></li>
-                <li><a href="../about.html">Author</a></li>
-                <li><a href="/#contact">Contact</a></li>
-                <li><a href="../order.html">Order</a></li>
+                <li><a href="/" data-i18n="nav.home">Home</a></li>
+                <li class="nav-hidden"><a href="africa.html" data-i18n="nav.books">Books</a></li>
+                <li><a href="/#animals" data-i18n="nav.animals">Animals</a></li>
+                <li><a href="../about.html" data-i18n="nav.author">Author</a></li>
+                <li><a href="/#contact" data-i18n="nav.contact">Contact</a></li>
+                <li><a href="../order.html" data-i18n="nav.order">Order</a></li>
             </ul>
         </div>
     </nav>
@@ -56,35 +57,36 @@
     <section class="book-hero hero-africa">
         <div class="container book-hero-inner">
             <div class="book-hero-cover">
-                <video class="book-cover-video" muted playsinline preload="auto" poster="../assets/images/africa-cover.png" id="bookCoverVideo">
+                <video class="book-cover-video lang-en-only" muted playsinline preload="auto" poster="../assets/images/africa-cover.png" id="bookCoverVideo">
                     <source src="../assets/images/africa-cover.mp4" type="video/mp4">
                 </video>
+                <img class="book-cover-video lang-af-only" src="../assets/images/afrikaans-book1.jpeg" alt="Boek 1 – Honey Tales Afrika">
             </div>
             <div class="book-hero-info">
-                <span class="book-number">Book 1</span>
-                <h1>Honey Tales Africa</h1>
+                <span class="book-number" data-i18n="book.1">Book 1</span>
+                <h1 data-i18n="b1.h1">Honey Tales Africa</h1>
 
-                <p class="book-description">Journey through the African savanna with 11 delightful poems about the continent's most fascinating creatures. From the towering giraffe to the tiny shongololo, each poem brings African wildlife to life with humour, warmth and a love of nature.</p>
+                <p class="book-description" data-i18n="b1.desc">Journey through the African savanna with 11 delightful poems about the continent's most fascinating creatures. From the towering giraffe to the tiny shongololo, each poem brings African wildlife to life with humour, warmth and a love of nature.</p>
                 <div class="book-details-row">
-                    <span class="book-detail">11 Poems</span>
-                    <span class="book-detail">Ages 0–100</span>
+                    <span class="book-detail" data-i18n="book.poems">11 Poems</span>
+                    <span class="book-detail" data-i18n="book.ages">Ages 0–100</span>
                     
                     <span class="book-detail">R180</span>
                 </div>
-                <a href="../order.html" class="btn btn-primary">Order Your Copy</a>
+                <a href="../order.html" class="btn btn-primary" data-i18n="book.orderCopy">Order Your Copy</a>
             </div>
             <div class="other-books">
 <a href="goggas.html" class="other-book-tile">
-                    <img src="../assets/images/goggas-cover.png" alt="Book 2 – Goggas & Creepy-Crawlies">
-                    <div class="other-book-tile-label">Book 2</div>
+                    <img src="../assets/images/goggas-cover.png" alt="Book 2 – Goggas & Creepy-Crawlies" data-af-src="../assets/images/afrikaans-book2.jpeg" data-i18n-alt="cover.2Alt">
+                    <div class="other-book-tile-label" data-i18n="book.2">Book 2</div>
                 </a>
                 <a href="friends.html" class="other-book-tile">
-                    <img src="../assets/images/friends-cover.png" alt="Book 3 – Furry & Feathered Friends">
-                    <div class="other-book-tile-label">Book 3</div>
+                    <img src="../assets/images/friends-cover.png" alt="Book 3 – Furry & Feathered Friends" data-af-src="../assets/images/afrikaans-book3.jpeg" data-i18n-alt="cover.3Alt">
+                    <div class="other-book-tile-label" data-i18n="book.3">Book 3</div>
                 </a>
                 <a href="wild.html" class="other-book-tile">
-                    <img src="../assets/images/wild-cover.png" alt="Book 4 – Wild & Wonderful">
-                    <div class="other-book-tile-label">Book 4</div>
+                    <img src="../assets/images/wild-cover.png" alt="Book 4 – Wild & Wonderful" data-af-src="../assets/images/afrikaans-book4.jpeg" data-i18n-alt="cover.4Alt">
+                    <div class="other-book-tile-label" data-i18n="book.4">Book 4</div>
                 </a>
             </div>
         </div>
@@ -98,29 +100,29 @@
     <!-- Sample Pages -->
     <section class="sample-section">
         <div class="container">
-            <h2 class="section-title fade-in">Inside the Book</h2>
-            <p class="section-subtitle fade-in">Click the sample to take a closer look</p>
+            <h2 class="section-title fade-in" data-i18n="book.inside">Inside the Book</h2>
+            <p class="section-subtitle fade-in" data-i18n="book.insideSub">Click the sample to take a closer look</p>
             <div class="sample-strip">
-                <img class="sample-thumb" src="../assets/images/giraffe-page.png" alt="Giraffe – sample page" loading="lazy">
+                <img class="sample-thumb" data-af-src="../assets/images/afrikaans-spider.jpeg" data-i18n-alt="b1.sampleAlt" src="../assets/images/giraffe-page.png" alt="Giraffe – sample page" loading="lazy">
             </div>
         </div>
     </section>
 
     <!-- Page Lightbox -->
     <div class="page-lightbox" id="pageLightbox">
-        <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
-        <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous">&#8249;</button>
-        <img class="lightbox-img" id="lightboxImg" src="" alt="Book page">
-        <button class="lightbox-next" id="lightboxNext" aria-label="Next">&#8250;</button>
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close" data-i18n-aria-label="lightbox.close">&times;</button>
+        <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous" data-i18n-aria-label="lightbox.prev">&#8249;</button>
+        <img class="lightbox-img" id="lightboxImg" src="" alt="Book page" data-i18n-alt="lightbox.img">
+        <button class="lightbox-next" id="lightboxNext" aria-label="Next" data-i18n-aria-label="lightbox.next">&#8250;</button>
     </div>
 
     <!-- Order Section -->
     <section class="order-section">
         <div class="container">
-            <h2 class="fade-in">Ready to Read?</h2>
-            <p class="fade-in">Get your copy of Honey Tales Africa Book 1 and discover all 11 poems with their beautiful illustrations. Perfect for bedtime reading, classrooms and gifts!</p>
+            <h2 class="fade-in" data-i18n="book.ready">Ready to Read?</h2>
+            <p class="fade-in" data-i18n="b1.cta">Get your copy of Honey Tales Africa Book 1 and discover all 11 poems with their beautiful illustrations. Perfect for bedtime reading, classrooms and gifts!</p>
             <div class="order-ctas fade-in">
-                <a href="../order.html" class="btn btn-primary">Order Your Copy</a>
+                <a href="../order.html" class="btn btn-primary" data-i18n="book.orderCopy">Order Your Copy</a>
             </div>
         </div>
     </section>
@@ -136,21 +138,21 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <h3>Honey Tales Africa</h3>
-                    <p>Poems for Young and Old by Carol Honey</p>
-                    <p class="footer-publisher">Published by Hive Publishing &bull; 2016</p>
+                    <p data-i18n="footer.tagline">Poems for Young and Old by Carol Honey</p>
+                    <p class="footer-publisher" data-i18n="footer.publisher">Published by Hive Publishing &bull; 2016</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Quick Links</h4>
+                    <h4 data-i18n="footer.quickLinks">Quick Links</h4>
                     <ul>
-                        <li><a href="/">Home</a></li>
-                                <li><a href="/#animals">Animals</a></li>
-                        <li class="nav-hidden"><a href="africa.html">Books</a></li>
-                        <li><a href="../about.html">Author</a></li>
-                        <li><a href="../order.html">Order</a></li>
+                        <li><a href="/" data-i18n="nav.home">Home</a></li>
+                                <li><a href="/#animals" data-i18n="nav.animals">Animals</a></li>
+                        <li class="nav-hidden"><a href="africa.html" data-i18n="nav.books">Books</a></li>
+                        <li><a href="../about.html" data-i18n="nav.author">Author</a></li>
+                        <li><a href="../order.html" data-i18n="nav.order">Order</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
-                    <h4>Contact</h4>
+                    <h4 data-i18n="footer.contact">Contact</h4>
                     <p><a href="/#contact">admin@honeytales.co.za</a></p>
                     <div class="footer-social">
                         <a href="https://facebook.com/honeytalesafrica" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Facebook">
@@ -163,8 +165,8 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; Carol Honey. All Rights Reserved.</p>
-                <p class="footer-credit">Designed &amp; Built by <a href="https://onzs.co.za" target="_blank" rel="noopener noreferrer">OnesnZeros</a></p>
+                <p data-i18n="footer.rights">&copy; Carol Honey. All Rights Reserved.</p>
+                <p class="footer-credit" data-i18n="footer.credit">Designed &amp; Built by <a href="https://onzs.co.za" target="_blank" rel="noopener noreferrer">OnesnZeros</a></p>
             </div>
         </div>
     </footer>
@@ -174,19 +176,20 @@
         <div class="whatsapp-popup" id="whatsappPopup">
             <div class="whatsapp-popup-header">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                <span>Chat with us!</span>
+                <span data-i18n="whatsapp.title">Chat with us!</span>
                 <button class="whatsapp-close" id="whatsappClose" aria-label="Close chat popup">&times;</button>
             </div>
             <div class="whatsapp-popup-body">
-                <p>Hi there! Want to order some books? Chat with us on WhatsApp!</p>
+                <p data-i18n="whatsapp.body">Hi there! Want to order some books? Chat with us on WhatsApp!</p>
             </div>
-            <a href="https://wa.me/27832610732?text=Hi!%20I'm%20interested%20in%20Honey%20Tales%20Africa" target="_blank" rel="noopener noreferrer" class="whatsapp-popup-btn">Start Chat</a>
+            <a href="https://wa.me/27832610732?text=Hi!%20I'm%20interested%20in%20Honey%20Tales%20Africa" data-i18n-href="whatsapp.link" target="_blank" rel="noopener noreferrer" class="whatsapp-popup-btn"><span data-i18n="whatsapp.start">Start Chat</span></a>
         </div>
-        <button class="whatsapp-fab" id="whatsappFab" aria-label="Open WhatsApp chat">
+        <button class="whatsapp-fab" id="whatsappFab" aria-label="Open WhatsApp chat" data-i18n-aria-label="whatsapp.open">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </button>
     </div>
 
+    <script src="../js/i18n.js"></script>
     <script src="../js/books.js"></script>
 </body>
 </html>
