@@ -127,14 +127,14 @@ window.HT_I18N = (function () {
         'b1.meta': 'Honey Tales Afrika Boek 1 – 11 heerlike gedigte oor Afrika se wild deur Carol Honey. Leeus, kameelperde, olifante en meer!',
         'b1.h1': 'Honey Tales Afrika',
         'b1.desc': 'Reis deur die Afrika-savanne met 11 heerlike gedigte oor die vasteland se boeiendste diere. Van die rysige kameelperd tot die klein shongololo – elke gedig bring Afrika se wild tot lewe met humor, warmte en ’n liefde vir die natuur.',
-        'b1.sampleAlt': 'Pappa en die Spinnekop – voorbeeldbladsy',
+        'b1.sampleAlt': 'Olifante – voorbeeldbladsy',
         'b1.cta': 'Kry jou eksemplaar van Honey Tales Afrika Boek 1 en ontdek al 11 gedigte met hul pragtige illustrasies. Perfek vir slaaptydstories, die klaskamer en as geskenk!',
 
         'b2.title': 'Honey Tales Afrika – Goggas en Kriewelende Kruipertjies | Boek 2',
         'b2.meta': 'Honey Tales Afrika Boek 2 – Goggas en Kriewelende Kruipertjies. 11 prettige gedigte oor Suid-Afrika se insekte en goggas deur Carol Honey.',
         'b2.h1': 'Goggas en Kriewelende Kruipertjies',
         'b2.desc': 'Duik in die fassinerende miniatuurwêreld van Suid-Afrika se goggas! Hierdie 11 pret-gevulde gedigte vier die kruipende en kriewelende diertjies wat ons wêreld met ons deel – van die ywerige by tot die skitterende skoenlapper – met Carol Honey se kenmerkende warmte en humor.',
-        'b2.sampleAlt': 'Olifante – voorbeeldbladsy',
+        'b2.sampleAlt': 'Pappa en die Spinnekop – voorbeeldbladsy',
         'b2.cta': 'Kry jou eksemplaar van Honey Tales Afrika Boek 2 en verken saam met jou kleintjies die wonderlike wêreld van goggas!',
 
         'b3.title': 'Honey Tales Afrika – Vriende: Veld en Vere | Boek 3',
