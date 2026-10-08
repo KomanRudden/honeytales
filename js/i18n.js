@@ -165,7 +165,7 @@ window.HT_I18N = (function () {
         'order.success': 'Dankie! Ons kontak jou binnekort met jou totaal.',
         'order.select': 'Kies Jou Boeke',
         'order.hint': 'Klik op + om eksemplare van elke boek by te voeg',
-        'order.priceNote': 'R180 per boek &bull; Gratis koerieraflewering in SA as jy al 4 bestel!',
+        'order.priceNote': 'R190 per boek &bull; Gratis koerieraflewering in SA as jy al 4 bestel!',
 
         // --- Author page ---
         'about.title': 'Oor Carol Honey – Honey Tales Afrika',
@@ -200,7 +200,7 @@ window.HT_I18N = (function () {
         'about.f6Alt': 'Riksja-man met kinders op die strand, uit Vriende: Veld en Vere',
         'about.f6Title': 'Trots Suid-Afrikaans',
         'about.f6': 'Met trots in Suid-Afrika geskryf, geïllustreer en uitgegee — ’n ware viering van die land se buitengewone natuurerfenis.',
-        'about.details': '11 gedigte per boek &bull; Sagteband &bull; R180 per boek',
+        'about.details': '11 gedigte per boek &bull; Sagteband &bull; R190 per boek',
         'about.testimonialsTitle': 'Wat Mense Sê',
         'about.testimonialsSub': 'Lof van opvoeders, ouers en lesers',
         'about.fiveStars': '5 sterre',

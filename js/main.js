@@ -63,10 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
         function run() {
             if (!fxRates) { setTimeout(run, 500); return; }
             const values = [
-                `$${(180 * fxRates.USD).toFixed(0)}`,
-                `£${(180 * fxRates.GBP).toFixed(0)}`,
-                `€${(180 * fxRates.EUR).toFixed(0)}`,
-                'R180'
+                `$${(190 * fxRates.USD).toFixed(0)}`,
+                `£${(190 * fxRates.GBP).toFixed(0)}`,
+                `€${(190 * fxRates.EUR).toFixed(0)}`,
+                'R190'
             ];
             let idx = 0;
             function cycle() {
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Chain: Books → Poems → Price → Age → Videos
         scrollUp(statBooks, '4', () => {
             scrollUp(statPoems, '44', () => {
-                scrollUp(statPrice, 'R180', () => {
+                scrollUp(statPrice, 'R190', () => {
                     startPriceCycle(); // begin cycling currencies after 10s
                     // Lock width to final "Ages 0-100" size so the ? doesn't cause reflow
                     statAge.textContent = t('ageFinal');
@@ -684,7 +684,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let total = 0;
             tiles.forEach(tile => {
                 const qty = parseInt(tile.dataset.qty || 0);
-                total += qty * parseInt(tile.dataset.price || 180);
+                total += qty * parseInt(tile.dataset.price || 190);
             });
             if (contactTotalEl) contactTotalEl.textContent = `R${total}`;
             updateContactFx(total);

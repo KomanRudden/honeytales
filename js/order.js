@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let total = 0;
             tiles.forEach(tile => {
                 const qty = parseInt(tile.dataset.qty || 0);
-                const price = parseInt(tile.dataset.price || 180);
+                const price = parseInt(tile.dataset.price || 190);
                 total += qty * price;
             });
             if (totalAmountEl) totalAmountEl.textContent = `R${total}`;
